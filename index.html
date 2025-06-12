@@ -245,10 +245,8 @@
         /* --- School Options Grid (adjusted for smaller cards) --- */
         .school-options-grid {
             display: grid;
-            /* Changed minmax to allow for smaller cards on larger screens,
-               ensuring all three fit in one row without excessive gap */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; /* Slightly reduced gap */
+            gap: 25px;
         }
         .school-card {
             background: #ffffff;
@@ -264,32 +262,32 @@
         }
         .school-card img {
             width: 100%;
-            height: 180px; /* Slightly reduced image height */
+            height: 180px;
             object-fit: cover;
         }
         .school-content { 
-            padding: 15px; /* Slightly reduced padding */
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            height: calc(100% - 180px); /* Adjusted height based on new image height */
+            height: calc(100% - 180px);
         }
         .school-content h3 {
-            margin-bottom: 8px; /* Slightly reduced margin */
-            font-size: 1.3rem; /* Slightly reduced font size for h3 within card */
+            margin-bottom: 8px;
+            font-size: 1.3rem;
         }
         .school-content p {
-            font-size: 0.9rem; /* Slightly reduced font size for paragraph */
+            font-size: 0.9rem;
             color: #666;
-            margin-bottom: 15px; /* Slightly reduced margin */
+            margin-bottom: 15px;
             flex-grow: 1;
         }
         .school-content .btn {
             width: auto;
             margin-top: auto;
-            padding: 10px 25px; /* Slightly smaller button */
-            font-size: 0.9rem; /* Slightly smaller button text */
+            padding: 10px 25px;
+            font-size: 0.9rem;
         }
 
         /* --- Footer (retained) --- */
@@ -305,13 +303,13 @@
             h2 { font-size: 2rem; }
             .main-nav, .main-header .btn-primary { display: none; }
             .school-options-grid {
-                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+                grid-template-columns: 1fr;
             }
             .school-card img {
-                height: 220px; /* Make images a bit larger on single column */
+                height: 220px;
             }
             .school-content {
-                height: auto; /* Reset height for smaller screens */
+                height: auto;
                 padding: 20px;
             }
         }
@@ -320,12 +318,14 @@
 <body>
     
     <div class="sticky-top-container">
+        <!-- The specialization banner is retained for consistency, can be removed if not needed here -->
         <div id="entrepreneur-banner" class="specialization-banner">
             School of Entrepreneurship
         </div>
         <header id="main-header" class="main-header">
             <div class="container">
-                <a href="index.html" class="logo"> <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
+                <a href="index.html" class="logo"> <!-- Link back to home -->
+                    <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
                 </a>
                 <nav class="main-nav">
                     <ul>
@@ -336,6 +336,7 @@
                         <li class="dropdown">
                             <a class="drop-btn">Our Schools ▾</a>
                             <div class="dropdown-content">
+                                <!-- Links point to the specific school pages -->
                                 <a href="entrepreneurship-school.html" id="school-entrepreneurship">School of Entrepreneurship</a>
                                 <a href="tech-school.html" id="school-tech">School of Technology</a>
                                 <a href="finance-school.html" id="school-finance">School of Finance</a>
@@ -343,12 +344,14 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="schools.html" class="btn btn-primary">Our Schools</a> </div>
+                <a href="schools.html" class="btn btn-primary">Our Schools</a> <!-- Button to this page -->
+            </div>
         </header>
     </div>
 
     <main>
-        <section id="schools" class="schools-section" style="background-color: var(--light-bg);">
+        <!-- Schools Selection Section (PRD 4.1 Homepage/Landing Page - School Selection) -->
+        <section id="schools" class="schools-section" style="background-color: var(--light-bg); padding-top: 120px;">
             <div class="container">
                 <div class="section-header">
                     <h2>Discover Our Specialized Schools</h2>
@@ -356,6 +359,7 @@
                 </div>
                 <div class="school-options-grid">
                     
+                    <!-- School of Finance Card -->
                     <div class="school-card">
                         <img src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Finance">
                         <div class="school-content">
@@ -365,6 +369,7 @@
                         </div>
                     </div>
 
+                    <!-- School of Entrepreneurship Card -->
                     <div class="school-card">
                         <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Entrepreneurship">
                         <div class="school-content">
@@ -374,6 +379,7 @@
                         </div>
                     </div>
 
+                    <!-- School of Technology Card (Matching the design you liked) -->
                     <div class="school-card">
                         <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Technology">
                         <div class="school-content">
@@ -404,8 +410,8 @@
             };
 
             // This banner functionality is from your original page.
-            // You might want to adjust its behavior or remove it for this page.
-            // For now, clicking Entrepreneurship will show it, others hide it.
+            // It will hide/show based on dropdown selection, but will not
+            // interfere with navigation to the actual school pages.
             schoolLinks.entrepreneurship.addEventListener('click', (e) => {
                 // e.preventDefault(); // Uncomment if you don't want to navigate
                 banner.classList.add('visible');
@@ -419,18 +425,10 @@
                 banner.classList.remove('visible');
             });
 
-            // The header scroll effect might not be as impactful on a shorter page
-            // but is retained for consistency.
+            // The header is set to 'scrolled' by default on internal pages for consistent appearance.
             const headerElement = document.getElementById('main-header');
-            // Assuming there's no hero section on this page that defines a trigger point.
-            // The header will remain in its "scrolled" state (dark logo, dark text)
-            // for general internal pages for better visibility.
             headerElement.classList.add('scrolled'); 
-            headerElement.querySelector('.logo img').style.filter = 'invert(100%)'; // Ensure logo is dark
-            
-            // To make dropdown links work without preventing default,
-            // the `href` attribute must point to the actual pages.
-            // The existing JS for `dropdown` only handles `display: block;` on hover.
+            headerElement.querySelector('.logo img').style.filter = 'invert(100%)';
         });
     </script>
 
