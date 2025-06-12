@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Institute | Our Schools</title>
+    
+    <link rel="preload" href="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" as="image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #d4e643;
+            --green-color: #27ae60;
+            --dark-bg: #121212;
+            --light-bg: #f9f9f9;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --text-secondary: #aaaaaa;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { 
+            font-size: clamp(2.5rem, 5vw, 4.5rem); 
+            font-weight: 800; 
+        }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 80px 0;
+            background-color: var(--text-light); /* Default section background */
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* --- Animation Keyframes (retained for consistency if needed) --- */
+        @keyframes fadeIn-Up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes ken-burns {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.1) translate(-2%, 2%);
+            }
+        }
+
+
+        /* --- Buttons (retained) --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary { 
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            border: none;
+        }
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-lime {
+            background: rgba(212, 230, 67, 0.25); /* Transparent Lime */
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .btn-lime:hover {
+            background: rgba(212, 230, 67, 0.45);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* --- Sticky Top Container (retained) --- */
+        .sticky-top-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .specialization-banner {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: bold;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .specialization-banner.visible {
+            max-height: 50px;
+            padding: 10px;
+        }
+
+        /* --- Dynamic Smart Header (retained, adapted for this page) --- */
+        .main-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+        .main-header.scrolled { 
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .logo img {
+            height: 85px; 
+            transition: filter 0.4s ease;
+            filter: invert(100%);
+        }
+        .main-header.scrolled .logo img {
+            /* No change needed for scrolled state if already inverted */
+        }
+        .main-nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        .main-nav ul li {
+            margin: 0 15px;
+        }
+        .main-nav a {
+            color: var(--text-dark);
+            font-weight: bold;
+            transition: color 0.4s ease;
+            text-shadow: none;
+        }
+        .main-header.scrolled .main-nav a {
+            color: var(--text-dark);
+        }
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+        .main-header .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            border: none;
+        }
+        .main-header.scrolled .btn-primary {
+            /* No change */
+        }
+
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            text-shadow: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--text-dark);
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown > a { cursor: pointer; }
+
+        /* --- School Options Grid (adjusted for smaller cards) --- */
+        .school-options-grid {
+            display: grid;
+            /* Changed minmax to allow for smaller cards on larger screens,
+               ensuring all three fit in one row without excessive gap */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; /* Slightly reduced gap */
+        }
+        .school-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .school-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .school-card img {
+            width: 100%;
+            height: 180px; /* Slightly reduced image height */
+            object-fit: cover;
+        }
+        .school-content { 
+            padding: 15px; /* Slightly reduced padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: calc(100% - 180px); /* Adjusted height based on new image height */
+        }
+        .school-content h3 {
+            margin-bottom: 8px; /* Slightly reduced margin */
+            font-size: 1.3rem; /* Slightly reduced font size for h3 within card */
+        }
+        .school-content p {
+            font-size: 0.9rem; /* Slightly reduced font size for paragraph */
+            color: #666;
+            margin-bottom: 15px; /* Slightly reduced margin */
+            flex-grow: 1;
+        }
+        .school-content .btn {
+            width: auto;
+            margin-top: auto;
+            padding: 10px 25px; /* Slightly smaller button */
+            font-size: 0.9rem; /* Slightly smaller button text */
+        }
+
+        /* --- Footer (retained) --- */
+        .main-footer {
+            background: var(--dark-bg);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* --- Responsive (retained, with minor card adjustments) --- */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .main-nav, .main-header .btn-primary { display: none; }
+            .school-options-grid {
+                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+            }
+            .school-card img {
+                height: 220px; /* Make images a bit larger on single column */
+            }
+            .school-content {
+                height: auto; /* Reset height for smaller screens */
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="sticky-top-container">
+        <div id="entrepreneur-banner" class="specialization-banner">
+            School of Entrepreneurship
+        </div>
+        <header id="main-header" class="main-header">
+            <div class="container">
+                <a href="index.html" class="logo"> <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html#mission">Our Mission</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="index.html#assessment">Assessment</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a class="drop-btn">Our Schools ▾</a>
+                            <div class="dropdown-content">
+                                <a href="entrepreneurship-school.html" id="school-entrepreneurship">School of Entrepreneurship</a>
+                                <a href="tech-school.html" id="school-tech">School of Technology</a>
+                                <a href="finance-school.html" id="school-finance">School of Finance</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="schools.html" class="btn btn-primary">Our Schools</a> </div>
+        </header>
+    </div>
+
+    <main>
+        <section id="schools" class="schools-section" style="background-color: var(--light-bg);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Discover Our Specialized Schools</h2>
+                    <p>Unlock your potential in these key areas of expertise.</p>
+                </div>
+                <div class="school-options-grid">
+                    
+                    <div class="school-card">
+                        <img src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Finance">
+                        <div class="school-content">
+                            <h3>School of Finance</h3>
+                            <p>Master financial strategies, investment, and wealth management for personal and business growth.</p>
+                            <a href="finance-school.html" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Entrepreneurship">
+                        <div class="school-content">
+                            <h3>School of Entrepreneurship</h3>
+                            <p>Ignite your startup idea, learn to build and scale innovative businesses from concept to market.</p>
+                            <a href="entrepreneurship-school.html" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="school-card">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Technology">
+                        <div class="school-content">
+                            <h3>School of Technology</h3>
+                            <p>Dive into cutting-edge tech, from AI and data science to software development and cybersecurity.</p>
+                            <a href="tech-school.html" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2024 Your Institute. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const banner = document.getElementById('entrepreneur-banner');
+            const schoolLinks = {
+                entrepreneurship: document.getElementById('school-entrepreneurship'),
+                tech: document.getElementById('school-tech'),
+                finance: document.getElementById('school-finance')
+            };
+
+            // This banner functionality is from your original page.
+            // You might want to adjust its behavior or remove it for this page.
+            // For now, clicking Entrepreneurship will show it, others hide it.
+            schoolLinks.entrepreneurship.addEventListener('click', (e) => {
+                // e.preventDefault(); // Uncomment if you don't want to navigate
+                banner.classList.add('visible');
+            });
+            schoolLinks.tech.addEventListener('click', (e) => {
+                // e.preventDefault();
+                banner.classList.remove('visible');
+            });
+            schoolLinks.finance.addEventListener('click', (e) => {
+                // e.preventDefault();
+                banner.classList.remove('visible');
+            });
+
+            // The header scroll effect might not be as impactful on a shorter page
+            // but is retained for consistency.
+            const headerElement = document.getElementById('main-header');
+            // Assuming there's no hero section on this page that defines a trigger point.
+            // The header will remain in its "scrolled" state (dark logo, dark text)
+            // for general internal pages for better visibility.
+            headerElement.classList.add('scrolled'); 
+            headerElement.querySelector('.logo img').style.filter = 'invert(100%)'; // Ensure logo is dark
+            
+            // To make dropdown links work without preventing default,
+            // the `href` attribute must point to the actual pages.
+            // The existing JS for `dropdown` only handles `display: block;` on hover.
+        });
+    </script>
+
+</body>
+</html>
