@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Institute | Multi-School Platform</title>
+    
+    <link rel="preload" href="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" as="image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+     
+    <style>
+        :root { --primary-color: #d4e643; --green-color: #27ae60; --dark-bg: #121212; --light-bg: #f9f9f9; --text-light: #ffffff; --text-dark: #333333; --text-secondary: #aaaaaa; --font-main: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4 { line-height: 1.2; margin-bottom: 1rem; color: var(--text-dark); }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+        p { margin-bottom: 1rem; }
+        a { text-decoration: none; color: var(--primary-color); }
+        section { padding: 80px 0; background-color: var(--text-light); }
+        .section-header { text-align: center; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        @keyframes fadeIn-Up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes ken-burns { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.1) translate(-2%, 2%); } }
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: bold; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+        .btn-primary { background-color: var(--primary-color); color: var(--text-dark); border: none; }
+        .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .btn-lime { background: rgba(212, 230, 67, 0.25); color: var(--text-light); border: 1px solid rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+        .btn-lime:hover { background: rgba(212, 230, 67, 0.45); border-color: rgba(255, 255, 255, 0.7); }
+        .sticky-top-container { position: sticky; top: 0; z-index: 100; }
+        .main-header { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: background 0.4s ease, border-color 0.4s ease; }
+        .main-header.scrolled { background: rgba(255, 255, 255, 0.8); border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+        .logo img { height: 85px; transition: filter 0.4s ease; filter: invert(0); }
+        .main-header.scrolled .logo img { filter: invert(100%); }
+        .main-nav { display: none; } /* Initially hide nav for simplicity, can be enabled for larger screens */
+        @media (min-width: 769px) { .main-nav { display: block; } }
+        .main-nav ul { display: flex; align-items: center; list-style: none; }
+        .main-nav ul li { margin: 0 15px; }
+        .main-nav a { color: var(--text-light); font-weight: bold; transition: color 0.4s ease; text-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .main-header.scrolled .main-nav a { color: var(--text-dark); text-shadow: none; }
+        .main-nav a:hover { color: var(--primary-color); }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 240px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); z-index: 1; border-radius: 5px; padding: 10px 0; margin-top: 10px; }
+        .dropdown-content a { color: var(--text-dark); padding: 12px 16px; display: block; text-align: left; text-shadow: none; }
+        .dropdown-content a:hover { background-color: #f1f1f1; color: var(--text-dark); }
+        .dropdown:hover .dropdown-content { display: block; }
+        .schools-overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .school-overview-card { background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; display: flex; flex-direction: column; }
+        .school-overview-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .school-overview-card img { width: 100%; height: 180px; object-fit: cover; }
+        .school-overview-content { padding: 20px; display: flex; flex-direction: column; align-items: center; flex-grow: 1; }
+        .school-overview-content h3 { margin-bottom: 8px; font-size: 1.3rem; }
+        .school-overview-content p { font-size: 0.9rem; color: #666; margin-bottom: 15px; flex-grow: 1; }
+        .school-overview-content .btn { width: auto; margin-top: auto; padding: 10px 25px; font-size: 0.9rem; }
+        .main-footer { background: var(--dark-bg); color: var(--text-secondary); text-align: center; padding: 20px 0; }
+    </style>
+</head>
+<body>
+    
+    <div class="sticky-top-container">
+        <header id="main-header" class="main-header">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="drop-btn">Explore Schools ▾</a>
+                            <div class="dropdown-content">
+                                <!-- UPDATED LINKS -->
+                                <a href="school-of-entrepreneurship.html">School of Entrepreneurship</a>
+                                <a href="school-of-technology.html">School of Technology</a>
+                                <a href="school-of-finance.html">School of Finance</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <main>
+        <section class="hero-section" id="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg) no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; position: relative; margin-top: -85px;">
+            <div class="hero-background" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg) no-repeat center center/cover; z-index: 1; animation: ken-burns 20s infinite alternate;"></div>
+            <div class="container" style="position: relative; z-index: 3; max-width: 800px;">
+                <div class="hero-content">
+                    <h1 style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; color: var(--text-light); text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Your Journey to Excellence Starts Here</h1>
+                    <p style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; animation-delay: 0.5s; font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem;">Discover our expert-led courses, workshops, and events designed to elevate your business and career.</p>
+                    <div class="btn-container" style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; animation-delay: 1s;">
+                        <a href="#schools-overview" class="btn btn-lime">Explore Our Schools</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schools-overview" class="school-content-section" style="background-color: var(--light-bg); padding-top: 80px;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Discover Our Specialized Schools</h2>
+                    <p>Unlock your potential in these key areas of expertise.</p>
+                </div>
+                <div class="schools-overview-grid">
+                    <div class="school-overview-card">
+                        <img src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Finance">
+                        <div class="school-overview-content">
+                            <h3>School of Finance</h3>
+                            <p>Master financial strategies, investment, and wealth management for personal and business growth.</p>
+                            <!-- UPDATED LINK -->
+                            <a href="school-of-finance.html" class="btn btn-primary">Visit School</a>
+                        </div>
+                    </div>
+                    <div class="school-overview-card">
+                        <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Entrepreneurship">
+                        <div class="school-overview-content">
+                            <!-- CORRECTED SPELLING -->
+                            <h3>School of Entrepreneurship</h3>
+                            <p>Ignite your startup idea, learn to build and scale innovative businesses from concept to market.</p>
+                            <!-- UPDATED LINK -->
+                            <a href="school-of-entrepreneurship.html" class="btn btn-primary">Visit School</a>
+                        </div>
+                    </div>
+                    <div class="school-overview-card">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Technology">
+                        <div class="school-overview-content">
+                            <h3>School of Technology</h3>
+                            <p>Dive into cutting-edge tech, from AI and data science to software development and cybersecurity.</p>
+                            <!-- UPDATED LINK -->
+                            <a href="school-of-technology.html" class="btn btn-primary">Visit School</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2024 Your Institute. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.getElementById('main-header');
+            const heroSection = document.getElementById('hero');
+            
+            const handleScroll = () => {
+                if (window.scrollY > 50) { // A simpler threshold for the landing page
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            // Smooth scrolling for the "Explore Our Schools" button
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
