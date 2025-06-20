@@ -115,17 +115,19 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            /* Changed: Initial state is black with blur */
             background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
-            padding: 15px 0;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
             backdrop-filter: blur(10px); /* Glass/blur effect */
             -webkit-backdrop-filter: blur(10px); /* Safari support */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
             box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* No shadow initially */
+            padding: 15px 0; /* Reverted to original padding */
         }
 
         .main-header.scrolled {
-            background-color: rgba(0, 0, 0, 0.9); /* Slightly more opaque black when scrolled */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add shadow on scroll */
+            /* Reverted to original scrolled state properties */
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px var(--shadow-medium);
         }
 
         .main-header .container {
@@ -140,12 +142,14 @@
 
         .main-header .logo img {
             height: 50px;
-            transition: filter 0.3s ease; /* Smooth transition for filter */
-            filter: invert(0%); /* Keep logo its original color initially */
+            /* Reverted logo filter transition to original */
+            transition: filter 0.3s ease;
+            filter: invert(100%); /* Keeps logo white against the initial black background */
         }
 
         .main-header.scrolled .logo img {
-            filter: invert(100%); /* Invert to white when scrolled */
+            /* Reverted logo filter for scrolled state to original */
+            filter: invert(0%); /* Makes logo original color (dark) when scrolled */
         }
 
         .main-nav ul {
@@ -168,6 +172,12 @@
             transition: color 0.3s ease;
         }
 
+        .main-header.scrolled .main-nav ul li a {
+            /* Reverted nav link color for scrolled state */
+            color: var(--dark-bg);
+        }
+
+
         .main-nav ul li a:hover,
         .main-nav ul li.dropdown:hover > a {
             color: var(--primary-color);
@@ -177,7 +187,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: var(--white-color); /* Reverted to original dropdown background */
             min-width: 200px;
             box-shadow: 0px 8px 16px 0px var(--shadow-medium);
             z-index: 1;
@@ -197,7 +207,7 @@
         }
 
         .dropdown-content a {
-            color: var(--white-color) !important; /* Override parent link color */
+            color: var(--text-color) !important; /* Reverted to original dropdown link color */
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -848,10 +858,14 @@
                 position: static; /* Allows dropdown to flow naturally */
                 width: 100%;
                 box-shadow: none;
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color: var(--white-color); /* Reverted */
                 border-radius: 0;
                 transform: translateY(0);
                 opacity: 1;
+            }
+
+            .dropdown-content a {
+                color: var(--text-color) !important; /* Reverted */
             }
 
             .hero-content h1 {
@@ -1562,6 +1576,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const banner = document.getElementById('entrepreneur-banner');
+            // The school links for dropdown are kept for consistency, but
+            // their direct hrefs are to the school sections on THIS page.
+            // The banner visibility is now mainly driven by the dropdown clicks for demonstration.
             const schoolLinks = {
                 entrepreneurship: document.querySelector('.dropdown-content a[href="#entrepreneurship-school"]'),
                 tech: document.querySelector('.dropdown-content a[href="#tech-school"]'),
@@ -1589,21 +1606,15 @@
             }
 
             // Header is set to 'scrolled' state immediately for this sub-page for consistent appearance.
-            // This logic is now removed/adjusted as the default header is already black.
             const headerElement = document.getElementById('main-header');
-            // We no longer add 'scrolled' class initially, as the header is already black by default.
-            // headerElement.classList.add('scrolled'); // Removed this line
-            // headerElement.querySelector('.logo img').style.filter = 'invert(100%)'; // Removed this line
+            // Reverted back to the original JS which immediately adds 'scrolled' class
+            headerElement.classList.add('scrolled');
+            // Reverted logo filter change back to original immediate application
+            headerElement.querySelector('.logo img').style.filter = 'invert(100%)';
 
-            // Add/Remove 'scrolled' class based on scroll position for subtle change
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) { // Adjust scroll threshold as needed
-                    headerElement.classList.add('scrolled');
-                } else {
-                    headerElement.classList.remove('scrolled');
-                }
-            });
-
+            // Removed the window scroll listener that dynamically added/removed 'scrolled' class,
+            // as the original intent was for it to be 'scrolled' by default on sub-pages.
+            // If you want the header to *change* on scroll, we'd re-add that.
 
             // Smooth scrolling for navigation links and other internal anchors
             document.querySelectorAll('nav a[href^="#"], .btn[href^="#"]').forEach(anchor => {
@@ -1665,6 +1676,7 @@
             });
 
             // Added for the original homepage hero background animation visibility
+            // This is applied only if the hero section has the hero-background element
             const mainHeroBackground = document.querySelector('#hero .hero-background');
             if (mainHeroBackground) {
                 mainHeroBackground.style.backgroundImage = 'url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg)';
