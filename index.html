@@ -1,1511 +1,1444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Institute | Multi-School Platform</title>
-    
-        <link rel="preload" href="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" as="image">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-     
-    <style>
-        /* --- Global Styles & Variables --- */
-        :root {
-            --primary-color: #d4e643;
-            --green-color: #27ae60;
-            --dark-bg: #121212;
-            --light-bg: #f9f9f9;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-            --text-secondary: #aaaaaa;
-            --font-main: 'Inter', sans-serif;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Institute | Multi-School Platform</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="preload" href="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" as="image">
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: var(--font-main);
-            background-color: var(--light-bg); /* Default background for general sections */
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #d4e643;
+            --green-color: #27ae60;
+            --dark-bg: #121212;
+            --light-bg: #f9f9f9;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --text-secondary: #aaaaaa;
+            --font-main: 'Inter', sans-serif;
+        }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        h1, h2, h3, h4 { /* Added h4 for course detail sections */
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text-dark); /* Default for most headings in light sections */
-        }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        h1 { 
-            font-size: clamp(2.5rem, 5vw, 4.5rem); 
-            font-weight: 800; 
-        }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.5rem; }
-        h4 { font-size: 1.25rem; } /* Default h4 for smaller headings */
+        body {
+            font-family: var(--font-main);
+            background-color: var(--light-bg); /* Default background for general sections */
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-        p {
-            margin-bottom: 1rem;
-        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-        }
+        h1, h2, h3, h4 { /* Added h4 for course detail sections */
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-dark); /* Default for most headings in light sections */
+        }
 
-        section {
-            padding: 80px 0;
-            background-color: var(--text-light); /* Default section background */
-        }
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+        }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; } /* Default h4 for smaller headings */
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* --- Animation Keyframes --- */
-        @keyframes fadeIn-Up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes ken-burns {
-            0% {
-                transform: scale(1) translate(0, 0);
-            }
-            100% {
-                transform: scale(1.1) translate(-2%, 2%);
-            }
-        }
+        p {
+            margin-bottom: 1rem;
+        }
 
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
 
-        /* --- Buttons --- */
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+        section {
+            padding: 80px 0;
+            background-color: var(--text-light); /* Default section background */
+        }
 
-        .btn-primary { 
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            border: none;
-        }
-        .btn-primary:hover {
-            filter: brightness(1.1);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-        .btn-lime {
-            background: rgba(212, 230, 67, 0.25); /* Transparent Lime */
-            color: var(--text-light);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-        .btn-lime:hover {
-            background: rgba(212, 230, 67, 0.45);
-            border-color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* --- Sticky Top Container --- */
-        .sticky-top-container {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        /* --- Animation Keyframes --- */
+        @keyframes fadeIn-Up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        .specialization-banner {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            text-align: center;
-            font-weight: bold;
-            max-height: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-        }
-        .specialization-banner.visible {
-            max-height: 50px;
-            padding: 10px;
-        }
-
-        /* --- Dynamic Smart Header --- */
-        .main-header {
-            background: rgba(255, 255, 255, 0.9); /* Opaque by default on inner pages */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: background 0.4s ease, border-color 0.4s ease;
-        }
-        .main-header.scrolled { /* This state is used for the header on inner sections */
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        .logo img {
-            height: 85px; 
-            transition: filter 0.4s ease;
-            filter: invert(100%); /* Logo will be dark on inner pages */
-        }
-        .main-header.scrolled .logo img {
-            /* No change needed if already inverted */
-        }
-        .main-nav ul {
-            display: flex;
-            align-items: center;
-            list-style: none;
-        }
-        .main-nav ul li {
-            margin: 0 15px;
-        }
-        .main-nav a {
-            color: var(--text-dark); /* Dark text on inner pages */
-            font-weight: bold;
-            transition: color 0.4s ease;
-            text-shadow: none;
-        }
-        .main-header.scrolled .main-nav a {
-            color: var(--text-dark);
-        }
-        .main-nav a:hover {
-            color: var(--primary-color);
-        }
-        .main-header .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            border: none;
-        }
-        .main-header.scrolled .btn-primary {
-            /* No change */
-        }
-
-        .dropdown { position: relative; }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            z-index: 1;
-            border-radius: 5px;
-            padding: 10px 0;
-            margin-top: 10px;
-        }
-        .dropdown-content a {
-            color: var(--text-dark);
-            padding: 12px 16px;
-            display: block;
-            text-align: left;
-            text-shadow: none;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            color: var(--text-dark);
-        }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown > a { cursor: pointer; }
-
-        /* --- Schools Overview Section (PRD 4.1) --- */
-        .schools-overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px;
-        }
-        .school-overview-card { /* Renamed from school-card to avoid conflict with school-page cards */
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-        }
-        .school-overview-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-        .school-overview-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .school-overview-content { 
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            height: calc(100% - 180px);
-        }
-        .school-overview-content h3 {
-            margin-bottom: 8px;
-            font-size: 1.3rem;
-        }
-        .school-overview-content p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-        .school-overview-content .btn {
-            width: auto;
-            margin-top: auto;
-            padding: 10px 25px;
-            font-size: 0.9rem;
-        }
-
-        /* --- School-Specific Sections (PRD 4.2) --- */
-        .school-hero-section {
-            /* Background image and color will be unique to each school section */
-            color: var(--text-light);
-            text-align: center;
-            padding: 150px 20px 80px; /* More padding at top for header */
-            position: relative;
-            z-index: 1;
-        }
-        .school-hero-section.finance {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
-        }
-        .school-hero-section.entrepreneurship {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
-        }
-        .school-hero-section.tech {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
-        }
-
-        .school-hero-section h1 {
-            color: var(--primary-color); /* Highlight school name */
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            font-size: clamp(2rem, 4vw, 3.5rem);
-        }
-        .school-hero-section .school-tagline {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 20px auto 0;
-            color: var(--text-light);
-        }
-        
-        .school-content-section {
-            background-color: var(--light-bg); /* Default light background for content */
-            padding: 80px 0;
-        }
-        /* Alternating background for sections for better visual separation */
-        .school-content-section:nth-of-type(odd) { /* Adjusted to make the first section light-bg */
-            background-color: var(--light-bg); 
-        }
-        .school-content-section:nth-of-type(even) { 
-            background-color: var(--text-light); 
-        }
-
-        .school-about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .school-about-image {
-            text-align: center;
-        }
-        .school-about-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .about-philosophy, .about-differentiators {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-        .about-philosophy h3, .about-differentiators h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        /* Removed .instructor-bios-grid style as per user request */
+        @keyframes ken-burns {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.1) translate(-2%, 2%);
+            }
+        }
 
 
-        /* --- Offerings Section (Course List) --- */
-        .course-list-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .course-item-card {
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .course-item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-        .course-item-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .course-item-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .course-item-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        .course-item-content p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-        /* Removed .course-meta style as per user request */
-        .course-item-content .btn-primary {
-            align-self: flex-start;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            margin-top: 15px;
-        }
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-        /* --- Course Detail Section (PRD 4.3 - Expanded within the page) --- */
-        .course-detail-expanded {
-            display: none; /* Hidden by default */
-            padding: 30px;
-            margin-top: 20px;
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.05); /* Inner shadow for expanded look */
-            border: 1px solid #eee;
-        }
-        .course-detail-expanded.show {
-            display: block; /* Show when 'show' class is added by JS */
-        }
-        .course-detail-expanded h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        .course-detail-expanded h5 { /* For sub-headings within course details */
-            font-size: 1.2rem;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-        }
-        .course-detail-expanded ul {
-            list-style: disc;
-            margin-left: 25px;
-            margin-bottom: 15px;
-            color: #444;
-        }
-        .course-detail-expanded ul li {
-            margin-bottom: 5px;
-        }
-        /* Removed .course-detail-meta-grid style as per user request */
-        /* Removed instructor-detail-card style as per user request */
-        .course-detail-expanded .enroll-button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px 20px;
-            font-size: 1rem;
-        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            border: none;
+        }
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-lime {
+            background: rgba(212, 230, 67, 0.25); /* Transparent Lime */
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .btn-lime:hover {
+            background: rgba(212, 230, 67, 0.45);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- Sticky Top Container --- */
+        .sticky-top-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .specialization-banner {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: bold;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .specialization-banner.visible {
+            max-height: 50px;
+            padding: 10px;
+        }
+
+        /* --- Dynamic Smart Header --- */
+        .main-header {
+            background: rgba(255, 255, 255, 0.9); /* Opaque by default on inner pages */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+        .main-header.scrolled { /* This state is used for the header on inner sections */
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .logo img {
+            height: 85px;
+            transition: filter 0.4s ease;
+            filter: invert(100%); /* Logo will be dark on inner pages */
+        }
+        .main-header.scrolled .logo img {
+            /* No change needed if already inverted */
+        }
+        .main-nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        .main-nav ul li {
+            margin: 0 15px;
+        }
+        .main-nav a {
+            color: var(--text-dark); /* Dark text on inner pages */
+            font-weight: bold;
+            transition: color 0.4s ease;
+            text-shadow: none;
+        }
+        .main-header.scrolled .main-nav a {
+            color: var(--text-dark);
+        }
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+        .main-header .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            border: none;
+        }
+        .main-header.scrolled .btn-primary {
+            /* No change */
+        }
+
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            text-shadow: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--text-dark);
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown > a { cursor: pointer; }
+
+        /* --- Schools Overview Section (PRD 4.1) --- */
+        .schools-overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .school-overview-card { /* Renamed from school-card to avoid conflict with school-page cards */
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .school-overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .school-overview-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .school-overview-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: calc(100% - 180px);
+        }
+        .school-overview-content h3 {
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        .school-overview-content p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .school-overview-content .btn {
+            width: auto;
+            margin-top: auto;
+            padding: 10px 25px;
+            font-size: 0.9rem;
+        }
+
+        /* --- School-Specific Sections (PRD 4.2) --- */
+        .school-hero-section {
+            /* Background image and color will be unique to each school section */
+            color: var(--text-light);
+            text-align: center;
+            padding: 150px 20px 80px; /* More padding at top for header */
+            position: relative;
+            z-index: 1;
+        }
+        .school-hero-section.finance {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+        }
+        .school-hero-section.entrepreneurship {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+        }
+        .school-hero-section.tech {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+        }
+
+        .school-hero-section h1 {
+            color: var(--primary-color); /* Highlight school name */
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+        .school-hero-section .school-tagline {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 20px auto 0;
+            color: var(--text-light);
+        }
+
+        .school-content-section {
+            background-color: var(--light-bg); /* Default light background for content */
+            padding: 80px 0;
+        }
+        /* Alternating background for sections for better visual separation */
+        .school-content-section:nth-of-type(odd) { /* Adjusted to make the first section light-bg */
+            background-color: var(--light-bg);
+        }
+        .school-content-section:nth-of-type(even) {
+            background-color: var(--text-light);
+        }
+
+        .school-about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .school-about-image {
+            text-align: center;
+        }
+        .school-about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-philosophy, .about-differentiators {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .about-philosophy h3, .about-differentiators h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        /* Removed .instructor-bios-grid style as per user request */
 
 
-        /* --- Why Choose Us Section (for the School - PRD 4.2.3) --- */
-        .why-choose-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .why-item {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .why-item:hover {
-            transform: translateY(-5px);
-        }
-        .why-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        .why-item p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 0;
-        }
+        /* --- Offerings Section (Course List) --- */
+        .course-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .course-item-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .course-item-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .course-item-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-item-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .course-item-content p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        /* Removed .course-meta style as per user request */
+        .course-item-content .btn-primary {
+            align-self: flex-start;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
 
-        /* --- NEW: Mission Section (from provided code) --- */
-        .mission-cards-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            perspective: 1000px; /* Add perspective for 3D effect */
-            margin-top: 40px; /* Ensure spacing below header */
-        }
-        .mission-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-            width: 320px;
-            text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            opacity: 1; /* Already loaded, remove fadeIn-Up specific animation */
-        }
-        .mission-card:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(-5deg); /* 3D Tilt Effect */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        .mission-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            line-height: 1;
-            margin-bottom: 1rem;
-        }
-        .mission-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-            color: var(--text-dark); /* Ensure dark text on light background */
-        }
-        .mission-card p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 0;
-        }
+        /* --- Course Detail Section (PRD 4.3 - Expanded within the page) --- */
+        .course-detail-expanded {
+            display: none; /* Hidden by default */
+            padding: 30px;
+            margin-top: 20px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.05); /* Inner shadow for expanded look */
+            border: 1px solid #eee;
+        }
+        .course-detail-expanded.show {
+            display: block; /* Show when 'show' class is added by JS */
+        }
+        .course-detail-expanded h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .course-detail-expanded h5 { /* For sub-headings within course details */
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .course-detail-expanded ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        .course-detail-expanded ul li {
+            margin-bottom: 5px;
+        }
+        /* Removed .course-detail-meta-grid style as per user request */
+        /* Removed instructor-detail-card style as per user request */
+        .course-detail-expanded .enroll-button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1rem;
+        }
 
-        /* --- NEW: General Form Styling (for Assessment and Contact) --- */
-        .form-section {
-            background-color: var(--light-bg); /* Use light-bg for forms */
-        }
-        .form-section:nth-of-type(even) { /* Alternate background for sections */
-            background-color: var(--text-light);
-        }
 
-        .form-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit; /* Use body font */
-            font-size: 1rem;
-            color: var(--text-dark);
-            background-color: #fff;
-        }
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .checkbox-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-        }
-        .checkbox-item input {
-            width: auto;
-            margin-right: 8px;
-            transform: scale(1.2); /* Make checkbox slightly larger */
-        }
+        /* --- Why Choose Us Section (for the School - PRD 4.2.3) --- */
+        .why-choose-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .why-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .why-item:hover {
+            transform: translateY(-5px);
+        }
+        .why-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .why-item p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0;
+        }
 
-        /* --- NEW: Courses Section (General) --- */
-        .general-courses-section {
-            background: var(--text-light); /* Matching previous section styles */
-            color: var(--text-dark); /* Ensure text is dark on light background */
-        }
-        .general-courses-section:nth-of-type(even) { /* Alternate background for sections */
-            background-color: var(--light-bg);
-        }
-        .general-courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .general-course-card { /* Renamed to avoid conflict */
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .general-course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-        .general-course-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .general-course-content { padding: 20px; }
-        .course-category {
-            display: inline-block;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: var(--text-dark);
-            background-color: var(--primary-color);
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .btn-link {
-            font-weight: bold;
-            color: var(--primary-color); /* Use primary color for links */
-            transition: color 0.3s ease;
-        }
-        .btn-link:hover {
-            color: var(--green-color); /* Subtle hover */
-        }
+        /* --- NEW: Mission Section (from provided code) --- */
+        .mission-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            perspective: 1000px; /* Add perspective for 3D effect */
+            margin-top: 40px; /* Ensure spacing below header */
+        }
+        .mission-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            width: 320px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            opacity: 1; /* Already loaded, remove fadeIn-Up specific animation */
+        }
+        .mission-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(-5deg); /* 3D Tilt Effect */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .mission-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .mission-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--text-dark); /* Ensure dark text on light background */
+        }
+        .mission-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0;
+        }
 
-        /* --- NEW: Events Section --- */
-        .events-section-new { /* Renamed to avoid conflict with old .events-section */
-            background-color: var(--light-bg); 
-            color: var(--text-dark); /* Ensure text is dark */
-        }
-        .events-section-new:nth-of-type(even) { /* Alternate background for sections */
-            background-color: var(--text-light);
-        }
-        .events-list {
-            margin-top: 40px;
-        }
-        .events-list .event-item-new { /* Renamed to avoid conflict */
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-        }
-        .event-date-new { /* Renamed to avoid conflict */
-            background: var(--primary-color);
-            color: var(--text-dark);
-            text-align: center;
-            padding: 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            min-width: 70px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .event-date-new .month { display: block; font-size: 0.9rem; }
-        .event-date-new .day { display: block; font-size: 2rem; line-height: 1; }
-        .event-details-new { flex-grow: 1; } /* Renamed */
-        .event-details-new h3 { margin-bottom: 0.5rem; }
-        .event-details-new p { margin-bottom: 0; color: #666; }
+        /* --- NEW: General Form Styling (for Assessment and Contact) --- */
+        .form-section {
+            background-color: var(--light-bg); /* Use light-bg for forms */
+        }
+        .form-section:nth-of-type(even) { /* Alternate background for sections */
+            background-color: var(--text-light);
+        }
 
-        /* --- Footer (retained) --- */
-        .main-footer {
-            background: var(--dark-bg);
-            color: var(--text-secondary);
-            text-align: center;
-            padding: 20px 0;
-        }
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit; /* Use body font */
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+            transform: scale(1.2); /* Make checkbox slightly larger */
+        }
 
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            h2 { font-size: 2rem; }
-            .main-nav, .main-header .btn-primary { display: none; }
-            
-            .schools-overview-grid, 
-            .mission-cards-container,
-            .general-courses-grid,
-            .why-choose-us-grid, 
-            .course-list-grid, 
-            .course-detail-meta-grid {
-                grid-template-columns: 1fr;
-            }
-            .school-overview-card img {
-                height: 220px;
-            }
-            .school-overview-content {
-                height: auto;
-                padding: 20px;
-            }
+        /* --- NEW: Courses Section (General) --- */
+        .general-courses-section {
+            background: var(--text-light); /* Matching previous section styles */
+            color: var(--text-dark); /* Ensure text is dark on light background */
+        }
+        .general-courses-section:nth-of-type(even) { /* Alternate background for sections */
+            background-color: var(--light-bg);
+        }
+        .general-courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .general-course-card { /* Renamed to avoid conflict */
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .general-course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .general-course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .general-course-content { padding: 20px; }
+        .course-category {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .btn-link {
+            font-weight: bold;
+            color: var(--primary-color); /* Use primary color for links */
+            transition: color 0.3s ease;
+        }
+        .btn-link:hover {
+            color: var(--green-color); /* Subtle hover */
+        }
 
-            .school-about-grid {
-                grid-template-columns: 1fr;
-            }
-            .school-about-image img {
-                margin-top: 30px; /* Add space when image stacks below text */
-            }
-            .course-item-card img {
-                height: 220px;
-            }
+        /* --- NEW: Events Section --- */
+        .events-section-new { /* Renamed to avoid conflict with old .events-section */
+            background-color: var(--light-bg);
+            color: var(--text-dark); /* Ensure text is dark */
+        }
+        .events-section-new:nth-of-type(even) { /* Alternate background for sections */
+            background-color: var(--text-light);
+        }
+        .events-list {
+            margin-top: 40px;
+        }
+        .events-list .event-item-new { /* Renamed to avoid conflict */
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .event-date-new { /* Renamed to avoid conflict */
+            background: var(--primary-color);
+            color: var(--text-dark);
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            min-width: 70px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .event-date-new .month { display: block; font-size: 0.9rem; }
+        .event-date-new .day { display: block; font-size: 2rem; line-height: 1; }
+        .event-details-new { flex-grow: 1; } /* Renamed */
+        .event-details-new h3 { margin-bottom: 0.5rem; }
+        .event-details-new p { margin-bottom: 0; color: #666; }
 
-            /* New sections responsive adjustments */
-            .event-item-new { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .event-item-new .btn { margin-top: 10px; width: 100%; }
-        }
-    </style>
+        /* --- Footer (retained) --- */
+        .main-footer {
+            background: var(--dark-bg);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .main-nav, .main-header .btn-primary { display: none; }
+
+            .schools-overview-grid,
+            .mission-cards-container,
+            .general-courses-grid,
+            .why-choose-us-grid,
+            .course-list-grid,
+            .course-detail-meta-grid {
+                grid-template-columns: 1fr;
+            }
+            .school-overview-card img {
+                height: 220px;
+            }
+            .school-overview-content {
+                height: auto;
+                padding: 20px;
+            }
+
+            .school-about-grid {
+                grid-template-columns: 1fr;
+            }
+            .school-about-image img {
+                margin-top: 30px; /* Add space when image stacks below text */
+            }
+            .course-item-card img {
+                height: 220px;
+            }
+
+            /* New sections responsive adjustments */
+            .event-item-new { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .event-item-new .btn { margin-top: 10px; width: 100%; }
+        }
+    </style>
 </head>
 <body>
-    
-    <div class="sticky-top-container">
-                <div id="entrepreneur-banner" class="specialization-banner">
-            School of Entrepreneurship
-        </div>
-        <header id="main-header" class="main-header scrolled">
-            <div class="container">
-                <a href="#hero" class="logo">                     <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
-                </a>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#schools-overview">Our Schools</a></li>
-                        <li><a href="#mission">Our Mission</a></li>
-                        <li><a href="#assessment-form">Assessment</a></li>
-                        <li><a href="#popular-courses">Popular Courses</a></li>
-                        <li><a href="#events-list">Events</a></li>
-                        <li><a href="#contact-form">Contact</a></li>
-                        <li class="dropdown">
-                            <a class="drop-btn">Explore Schools ▾</a>
-                            <div class="dropdown-content">
-                                <a href="#entrepreneurship-school">School of Entrepreneurship</a>
-                                <a href="#tech-school">School of Technology</a>
-                                <a href="#finance-school">School of Finance</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <a href="#schools-overview" class="btn btn-primary">Discover</a>             </div>
-        </header>
-    </div>
 
-    <main>
-                <section class="hero-section" id="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg) no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; position: relative;">
-            <div class="hero-background" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg) no-repeat center center/cover; z-index: 1; animation: ken-burns 20s infinite alternate;"></div>
-            <div class="container" style="position: relative; z-index: 3; max-width: 800px;">
-                <div class="hero-content">
-                    <h1 style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; color: var(--text-light); text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Your Journey to Excellence Starts Here</h1>
-                    <p style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; animation-delay: 0.5s; font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem;">Discover our expert-led courses, workshops, and events designed to elevate your business and career.</p>
-                    <div class="btn-container" style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; animation-delay: 1s;">
-                        <a href="#schools-overview" class="btn btn-lime">Explore Our Schools</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="sticky-top-container">
+        <div id="entrepreneur-banner" class="specialization-banner">
+            School of Entrepreneurship
+        </div>
+        <header id="main-header" class="main-header scrolled">
+            <div class="container">
+                <a href="#hero" class="logo"> <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#schools-overview">Our Schools</a></li>
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#assessment-form">Assessment</a></li>
+                        <li><a href="#popular-courses">Popular Courses</a></li>
+                        <li><a href="#events-list">Events</a></li>
+                        <li><a href="#contact-form">Contact</a></li>
+                        <li class="dropdown">
+                            <a class="drop-btn">Explore Schools ▾</a>
+                            <div class="dropdown-content">
+                                <a href="#entrepreneurship-school">School of Entrepreneurship</a>
+                                <a href="#tech-school">School of Technology</a>
+                                <a href="#finance-school">School of Finance</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="#schools-overview" class="btn btn-primary">Discover</a> </div>
+        </header>
+    </div>
 
-                <section id="schools-overview" class="school-content-section" style="background-color: var(--light-bg); padding-top: 80px;">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Discover Our Specialized Schools</h2>
-                    <p>Unlock your potential in these key areas of expertise.</p>
-                </div>
-                <div class="schools-overview-grid">
-                    
-                                        <div class="school-overview-card">
-                        <img src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Finance">
-                        <div class="school-overview-content">
-                            <h3>School of Finance</h3>
-                            <p>Master financial strategies, investment, and wealth management for personal and business growth.</p>
-                            <a href="#finance-school" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
+    <main>
+        <section class="hero-section" id="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg) no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; position: relative;">
+            <div class="hero-background" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg) no-repeat center center/cover; z-index: 1; animation: ken-burns 20s infinite alternate;"></div>
+            <div class="container" style="position: relative; z-index: 3; max-width: 800px;">
+                <div class="hero-content">
+                    <h1 style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; color: var(--text-light); text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Your Journey to Excellence Starts Here</h1>
+                    <p style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; animation-delay: 0.5s; font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem;">Discover our expert-led courses, workshops, and events designed to elevate your business and career.</p>
+                    <div class="btn-container" style="opacity: 0; animation: fadeIn-Up 0.8s ease-out forwards; animation-delay: 1s;">
+                        <a href="#schools-overview" class="btn btn-lime">Explore Our Schools</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                        <div class="school-overview-card">
-                        <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Entrepreneurship">
-                        <div class="school-overview-content">
-                            <h3>School of Entrepreneurship</h3>
-                            <p>Ignite your startup idea, learn to build and scale innovative businesses from concept to market.</p>
-                            <a href="#entrepreneurship-school" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
+        <section id="schools-overview" class="school-content-section" style="background-color: var(--light-bg); padding-top: 80px;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Discover Our Specialized Schools</h2>
+                    <p>Unlock your potential in these key areas of expertise.</p>
+                </div>
+                <div class="schools-overview-grid">
 
-                                        <div class="school-overview-card">
-                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Technology">
-                        <div class="school-overview-content">
-                            <h3>School of Technology</h3>
-                            <p>Dive into cutting-edge tech, from AI and data science to software development and cybersecurity.</p>
-                            <a href="#tech-school" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
+                    <div class="school-overview-card">
+                        <img src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Finance">
+                        <div class="school-overview-content">
+                            <h3>School of Finance</h3>
+                            <p>Master financial strategies, investment, and wealth management for personal and business growth.</p>
+                            <a href="#finance-school" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
 
-                </div>
-            </div>
-        </section>
+                    <div class="school-overview-card">
+                        <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Entrepreneurship">
+                        <div class="school-overview-content">
+                            <h3>School of Entrepreneurship</h3>
+                            <p>Ignite your startup idea, learn to build and scale innovative businesses from concept to market.</p>
+                            <a href="#entrepreneurship-school" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
 
-                <section id="mission" class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Re-imagine Your Business Growth</h2>
-                    <p>Our philosophy is built on three core pillars of support.</p>
-                </div>
-                <div class="mission-cards-container">
-                    <div class="mission-card">
-                        <div class="mission-number">01</div>
-                        <h3>Building Foundations</h3>
-                        <p>Fostering accountability and adaptability to uphold professional excellence.</p>
-                    </div>
-                    <div class="mission-card">
-                        <div class="mission-number">02</div>
-                        <h3>Tenacious Support</h3>
-                        <p>Dedicated guidance, ensuring accountability at every step of your journey.</p>
-                    </div>
-                    <div class="mission-card">
-                        <div class="mission-number">03</div>
-                        <h3>Growth Endurance</h3>
-                        <p>Achieve and sustain growth with support for a modern team mentality.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-                <section id="assessment-form" class="form-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Start Your Assessment</h2>
-                    <p>Answer a few questions to help us understand how we can best support your entrepreneurial journey.</p>
-                </div>
-                <div class="form-container">
-                    <form>
-                        <div class="form-group">
-                            <label for="biz-stage">What is your current business stage?</label>
-                            <select id="biz-stage" name="biz_stage" required>
-                                <option value="">Select your stage</option>
-                                <option value="idea">Just an idea</option>
-                                <option value="startup">Startup (less than 1 year)</option>
-                                <option value="growth">Growth phase (1-5 years)</option>
-                                <option value="established">Established business (5+ years)</option>
-                            </select>
-                        </div>
+                    <div class="school-overview-card">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="School of Technology">
+                        <div class="school-overview-content">
+                            <h3>School of Technology</h3>
+                            <p>Dive into cutting-edge tech, from AI and data science to software development and cybersecurity.</p>
+                            <a href="#tech-school" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="goal">What is your primary goal?</label>
-                            <select id="goal" name="goal" required>
-                                <option value="">Select your goal</option>
-                                <option value="launch">Launch a new venture</option>
-                                <option value="scale">Scale my existing business</option>
-                                <option value="innovation">Develop innovative products/services</option>
-                                <option value="personal-growth">Personal entrepreneurial skill development</option>
-                            </select>
-                        </div>
+                </div>
+            </div>
+        </section>
 
-                        <div class="form-group">
-                            <label>What areas are you most interested in for support?</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="marketing" name="interest" value="marketing">
-                                    <label for="marketing">Marketing & Sales</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="finance" name="interest" value="finance">
-                                    <label for="finance">Financial Management</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="operations" name="interest" value="operations">
-                                    <label for="operations">Operations & Logistics</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="tech-dev" name="interest" value="tech-dev">
-                                    <label for="tech-dev">Technology Development</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="strategy" name="interest" value="strategy">
-                                    <label for="strategy">Business Strategy</label>
-                                </div>
-                            </div>
-                        </div>
+        <section id="mission" class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Re-imagine Your Business Growth</h2>
+                    <p>Our philosophy is built on three core pillars of support.</p>
+                </div>
+                <div class="mission-cards-container">
+                    <div class="mission-card">
+                        <div class="mission-number">01</div>
+                        <h3>Building Foundations</h3>
+                        <p>Fostering accountability and adaptability to uphold professional excellence.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-number">02</div>
+                        <h3>Tenacious Support</h3>
+                        <p>Dedicated guidance, ensuring accountability at every step of your journey.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-number">03</div>
+                        <h3>Growth Endurance</h3>
+                        <p>Achieve and sustain growth with support for a modern team mentality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <div class="form-group">
-                            <label for="email">Your Email Address:</label>
-                            <input type="email" id="email" name="email" placeholder="name@example.com" required>
-                        </div>
+        <section id="assessment-form" class="form-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Start Your Assessment</h2>
+                    <p>Answer a few questions to help us understand how we can best support your entrepreneurial journey.</p>
+                </div>
+                <div class="form-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="biz-stage">What is your current business stage?</label>
+                            <select id="biz-stage" name="biz_stage" required>
+                                <option value="">Select one...</option>
+                                <option value="idea">Idea Stage</option>
+                                <option value="startup">Early-stage Startup (0-2 years)</option>
+                                <option value="growth">Growth Stage (2-5 years)</option>
+                                <option value="established">Established Business (5+ years)</option>
+                            </select>
+                        </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Assessment</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+                        <div class="form-group">
+                            <label>Which areas are you most interested in improving?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="marketing" name="interest" value="marketing">
+                                    <label for="marketing">Marketing & Sales</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="finance" name="interest" value="finance">
+                                    <label for="finance">Financial Management</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="product" name="interest" value="product">
+                                    <label for="product">Product Development</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="leadership" name="interest" value="leadership">
+                                    <label for="leadership">Leadership & Team Building</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="strategy" name="interest" value="strategy">
+                                    <label for="strategy">Business Strategy</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="funding" name="interest" value="funding">
+                                    <label for="funding">Funding & Investment</label>
+                                </div>
+                            </div>
+                        </div>
 
-                <section id="popular-courses" class="general-courses-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our Popular Courses</h2>
-                    <p>Explore some of our most sought-after programs across all schools.</p>
-                </div>
-                <div class="general-courses-grid">
-                                        <div class="general-course-card">
-                        <img src="https://images.pexels.com/photos/53621/brain-computer-analogue-process-53621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Investment Fundamentals">
-                        <div class="general-course-content">
-                            <span class="course-category">Finance</span>
-                            <h3>Investment Fundamentals</h3>
-                            <p>Learn the basics of stock markets, bonds, and portfolio diversification.</p>
-                            <a href="#finance-school" class="btn-link">View Course</a>
-                        </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="biggest-challenge">What is your biggest current business challenge?</label>
+                            <textarea id="biggest-challenge" name="biggest_challenge" placeholder="Describe your main challenge in a few sentences..."></textarea>
+                        </div>
 
-                                        <div class="general-course-card">
-                        <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Startup Launchpad">
-                        <div class="general-course-content">
-                            <span class="course-category">Entrepreneurship</span>
-                            <h3>Startup Launchpad</h3>
-                            <p>Turn your idea into a viable business with our step-by-step guide.</p>
-                            <a href="#entrepreneurship-school" class="btn-link">View Course</a>
-                        </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="email-assessment">Your Email (for results & recommendations):</label>
+                            <input type="email" id="email-assessment" name="email" placeholder="name@example.com" required>
+                        </div>
 
-                                        <div class="general-course-card">
-                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data Science for Business">
-                        <div class="general-course-content">
-                            <span class="course-category">Technology</span>
-                            <h3>Data Science for Business</h3>
-                            <p>Leverage data analytics to make informed business decisions.</p>
-                            <a href="#tech-school" class="btn-link">View Course</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Assessment</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-                <section id="events-list" class="events-section-new">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Upcoming Events & Workshops</h2>
-                    <p>Join our community for insightful sessions and networking opportunities.</p>
-                </div>
-                <div class="events-list">
-                                        <div class="event-item-new">
-                        <div class="event-date-new">
-                            <span class="month">JUL</span>
-                            <span class="day">15</span>
-                        </div>
-                        <div class="event-details-new">
-                            <h3>Future of AI in Business Summit</h3>
-                            <p>Explore the transformative impact of Artificial Intelligence on modern businesses. <br> Online Webinar | 10:00 AM - 12:00 PM SAST</p>
-                        </div>
-                        <a href="#" class="btn btn-primary">Register</a>
-                    </div>
+        <section id="popular-courses" class="general-courses-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Popular Courses</h2>
+                    <p>Explore top-rated courses designed to give you practical skills and real-world insights.</p>
+                </div>
+                <div class="general-courses-grid">
+                    <div class="general-course-card">
+                        <img src="https://images.pexels.com/photos/7319327/pexels-photo-7319327.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Financial Modeling Course">
+                        <div class="general-course-content">
+                            <span class="course-category">Finance</span>
+                            <h3>Advanced Financial Modeling</h3>
+                            <p>Master the art of building robust financial models for valuation, forecasting, and decision-making.</p>
+                            <a href="#finance-school" class="btn-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="general-course-card">
+                        <img src="https://images.pexels.com/photos/5926394/pexels-photo-5926394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Startup Growth Strategies">
+                        <div class="general-course-content">
+                            <span class="course-category">Entrepreneurship</span>
+                            <h3>Startup Growth Strategies</h3>
+                            <p>Identify key growth levers and implement scalable strategies to accelerate your venture's expansion.</p>
+                            <a href="#entrepreneurship-school" class="btn-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="general-course-card">
+                        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Introduction to AI & Machine Learning">
+                        <div class="general-course-content">
+                            <span class="course-category">Technology</span>
+                            <h3>Introduction to AI & ML</h3>
+                            <p>Understand the fundamentals of Artificial Intelligence and Machine Learning, and their real-world applications.</p>
+                            <a href="#tech-school" class="btn-link">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                        <div class="event-item-new">
-                        <div class="event-date-new">
-                            <span class="month">AUG</span>
-                            <span class="day">02</span>
-                        </div>
-                        <div class="event-details-new">
-                            <h3>Entrepreneurial Mindset Workshop</h3>
-                            <p>Develop the core skills and mindset required for successful entrepreneurship. <br> On-site | Benoni, Gauteng, South Africa | 09:00 AM - 04:00 PM SAST</p>
-                        </div>
-                        <a href="#" class="btn btn-primary">Register</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="events-list" class="events-section-new">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Upcoming Events & Workshops</h2>
+                    <p>Join our community for insightful events, workshops, and networking opportunities.</p>
+                </div>
+                <div class="events-list">
+                    <div class="event-item-new">
+                        <div class="event-date-new">
+                            <span class="month">JUL</span>
+                            <span class="day">15</span>
+                        </div>
+                        <div class="event-details-new">
+                            <h3>Webinar: Future of FinTech</h3>
+                            <p>Explore the latest trends and innovations shaping the financial technology landscape.</p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Register</a>
+                    </div>
+                    <div class="event-item-new">
+                        <div class="event-date-new">
+                            <span class="month">AUG</span>
+                            <span class="day">02</span>
+                        </div>
+                        <div class="event-details-new">
+                            <h3>Workshop: Lean Startup Methodology</h3>
+                            <p>Learn how to build and validate your business ideas efficiently using Lean principles.</p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Register</a>
+                    </div>
+                    <div class="event-item-new">
+                        <div class="event-date-new">
+                            <span class="month">SEP</span>
+                            <span class="day">10</span>
+                        </div>
+                        <div class="event-details-new">
+                            <h3>Tech Summit: AI for Business</h3>
+                            <p>A comprehensive summit on integrating AI solutions for business growth and efficiency.</p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Register</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <section id="entrepreneurship-school" class="school-hero-section entrepreneurship">
-            <div class="container">
-                <h1>School of Entrepreneurship</h1>
-                <p class="school-tagline">Igniting innovation and fostering the next generation of business leaders.</p>
-            </div>
-        </section>
 
-        <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About Our School of Entrepreneurship</h2>
-                </div>
-                <div class="school-about-grid">
-                    <div class="about-philosophy">
-                        <h3>Our Philosophy</h3>
-                        <p>The School of Entrepreneurship is dedicated to nurturing visionary thinkers and doers. We provide practical, hands-on learning experiences that equip aspiring entrepreneurs with the tools, knowledge, and network to launch, manage, and scale successful ventures. Our curriculum emphasizes innovation, problem-solving, and resilience.</p>
-                    </div>
-                    <div class="school-about-image">
-                        <img src="https://images.pexels.com/photos/3184429/pexels-photo-3184429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Entrepreneurship Discussion">
-                    </div>
-                    <div class="about-differentiators">
-                        <h3>What Makes Us Different?</h3>
-                        <ul>
-                            <li><strong>Mentorship from Industry Leaders:</strong> Learn directly from successful entrepreneurs.</li>
-                            <li><strong>Real-World Project Based Learning:</strong> Apply theories to practical startup challenges.</li>
-                            <li><strong>Vibrant Ecosystem:</strong> Access to incubators, investors, and a supportive community.</li>
-                            <li><strong>Tailored Curriculum:</strong> Programs designed for various stages of entrepreneurial development.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="finance-school" class="school-hero-section finance">
+            <div class="container">
+                <h1>School of Finance</h1>
+                <p class="school-tagline">Empowering you with the knowledge and tools to navigate the complex world of finance and investment.</p>
+            </div>
+        </section>
 
-                <section class="school-content-section" style="background-color: var(--text-light);">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our Entrepreneurship Programs</h2>
-                    <p>From idea generation to scaling, find the program that fits your entrepreneurial journey.</p>
-                </div>
-                <div class="course-list-grid">
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/7438101/pexels-photo-7438101.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Startup Fundamentals">
-                        <div class="course-item-content">
-                            <h3>Startup Fundamentals</h3>
-                            <p>An intensive program for aspiring entrepreneurs to validate ideas, build MVPs, and secure initial funding.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="startup-fundamentals">View Details</button>
-                        </div>
-                    </div>
+        <section class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About the School of Finance</h2>
+                    <p>Our finance programs are designed for aspiring financial professionals, entrepreneurs, and individuals seeking to enhance their financial literacy.</p>
+                </div>
+                <div class="school-about-grid">
+                    <div class="school-about-text">
+                        <div class="about-philosophy">
+                            <h3>Our Philosophy</h3>
+                            <p>We believe in practical, applicable financial education. Our curriculum combines theoretical foundations with real-world case studies and hands-on exercises to ensure you gain skills that are immediately valuable.</p>
+                        </div>
+                        <div class="about-differentiators">
+                            <h3>What Sets Us Apart</h3>
+                            <ul>
+                                <li><strong>Industry Expert Instructors:</strong> Learn from seasoned financial analysts, portfolio managers, and economists.</li>
+                                <li><strong>Market-Relevant Curriculum:</strong> Our courses are continuously updated to reflect current market trends and regulatory changes.</li>
+                                <li><strong>Practical Skill Development:</strong> Focus on building financial models, analyzing investments, and making informed financial decisions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="school-about-image">
+                        <img src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Finance Classroom">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/7162620/pexels-photo-7162620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Growth Hacking Strategies">
-                        <div class="course-item-content">
-                            <h3>Growth Hacking Strategies</h3>
-                            <p>Learn aggressive and creative marketing tactics to achieve rapid business growth and user acquisition.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="growth-hacking">View Details</button>
-                        </div>
-                    </div>
+        <section class="school-content-section" style="background-color: var(--text-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Finance Course Offerings</h2>
+                    <p>Dive deep into various aspects of finance with our comprehensive courses.</p>
+                </div>
+                <div class="course-list-grid">
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/7567705/pexels-photo-7567705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Investment Banking Essentials">
+                        <div class="course-item-content">
+                            <h3>Investment Banking Essentials</h3>
+                            <p>Understand the core functions of investment banking, M&A, and capital markets.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'ib-essentials')">View Details</a>
+                            <div id="ib-essentials-details" class="course-detail-expanded">
+                                <h4>Investment Banking Essentials</h4>
+                                <p>This course provides a comprehensive introduction to investment banking, covering mergers and acquisitions (M&A), equity capital markets (ECM), debt capital markets (DCM), and corporate restructuring. You will learn the analytical tools and processes used in real-world investment banking transactions, preparing you for entry-level roles in the field.</p>
+                                <h5>What You'll Learn:</h5>
+                                <ul>
+                                    <li>M&A process and valuation techniques</li>
+                                    <li>Equity and debt issuance mechanisms</li>
+                                    <li>Financial statement analysis for deal-making</li>
+                                    <li>Industry overview and career paths</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/6863378/pexels-photo-6863378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Personal Finance Mastery">
+                        <div class="course-item-content">
+                            <h3>Personal Finance Mastery</h3>
+                            <p>Gain control of your personal finances, from budgeting and saving to investing and retirement planning.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'pf-mastery')">View Details</a>
+                            <div id="pf-mastery-details" class="course-detail-expanded">
+                                <h4>Personal Finance Mastery</h4>
+                                <p>This practical course equips you with the essential knowledge and skills to manage your personal finances effectively. You'll learn how to create a budget, save for your goals, understand different investment vehicles, manage debt, and plan for a secure retirement. Ideal for anyone looking to take charge of their financial future.</p>
+                                <h5>Topics Include:</h5>
+                                <ul>
+                                    <li>Budgeting and cash flow management</li>
+                                    <li>Debt reduction strategies</li>
+                                    <li>Introduction to stocks, bonds, and mutual funds</li>
+                                    <li>Retirement planning and insurance basics</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/33827/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cryptocurrency & Blockchain Fundamentals">
+                        <div class="course-item-content">
+                            <h3>Cryptocurrency & Blockchain</h3>
+                            <p>Explore the revolutionary world of digital currencies and blockchain technology.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'crypto-blockchain')">View Details</a>
+                            <div id="crypto-blockchain-details" class="course-detail-expanded">
+                                <h4>Cryptocurrency & Blockchain Fundamentals</h4>
+                                <p>Delve into the foundational concepts of cryptocurrency and blockchain technology. This course covers the history, underlying principles, and various applications of blockchain, including how cryptocurrencies like Bitcoin and Ethereum work. Understand the potential impact of this technology on industries worldwide.</p>
+                                <h5>Key Learnings:</h5>
+                                <ul>
+                                    <li>Decentralization and distributed ledger technology</li>
+                                    <li>Mechanisms of Bitcoin and popular altcoins</li>
+                                    <li>Smart contracts and decentralized applications (DApps)</li>
+                                    <li>Security considerations and future outlook</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Funding & Investment Readiness">
-                        <div class="course-item-content">
-                            <h3>Funding & Investment Readiness</h3>
-                            <p>Prepare your startup for investment, understand valuation, term sheets, and investor relations.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="funding-investment">View Details</button>
-                        </div>
-                    </div>
-                </div>
+        <section class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Our Finance School?</h2>
+                    <p>We provide a unique learning experience tailored to your financial aspirations.</p>
+                </div>
+                <div class="why-choose-us-grid">
+                    <div class="why-item">
+                        <h4>Real-World Application</h4>
+                        <p>Our courses are packed with practical examples and case studies from the financial industry.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Expert Instructors</h4>
+                        <p>Learn from professionals with extensive experience in banking, investment, and corporate finance.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Career Focused</h4>
+                        <p>We help you build the skills and network necessary to advance your financial career.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Flexible Learning</h4>
+                        <p>Access course materials anytime, anywhere, with options for live sessions and self-paced study.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                <div id="course-details-container">
-                                        <div id="startup-fundamentals-details" class="course-detail-expanded">
-                        <h4>Startup Fundamentals: Your Launchpad to Success</h4>
-                        <p>This comprehensive program covers everything you need to know to transform your groundbreaking idea into a thriving startup. From ideation to market entry, we provide a structured approach with expert guidance.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Develop a robust business model and value proposition.</li>
-                            <li>Conduct effective market research and competitive analysis.</li>
-                            <li>Create a minimum viable product (MVP) and iterate based on feedback.</li>
-                            <li>Understand legal aspects, intellectual property, and team building.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Aspiring entrepreneurs, early-stage startup founders, and innovators looking to formalize their business ideas.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Startup Fundamentals</button>
-                    </div>
 
-                                        <div id="growth-hacking-details" class="course-detail-expanded">
-                        <h4>Growth Hacking Strategies: Accelerate Your User Base</h4>
-                        <p>Unleash rapid growth with this course focused on low-cost, innovative marketing and product strategies. Learn to optimize your funnel and acquire users efficiently.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Implement AARRR funnel metrics for acquisition, activation, retention, referral, and revenue.</li>
-                            <li>Master viral marketing techniques and content strategy.</li>
-                            <li>Utilize data analytics for continuous optimization and rapid experimentation.</li>
-                            <li>Understand user psychology and behavioral economics in growth.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Marketing professionals, product managers, and entrepreneurs looking to accelerate user acquisition and business growth.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Growth Hacking Strategies</button>
-                    </div>
+        <section id="entrepreneurship-school" class="school-hero-section entrepreneurship">
+            <div class="container">
+                <h1>School of Entrepreneurship</h1>
+                <p class="school-tagline">Cultivating the next generation of visionary leaders and successful business founders.</p>
+            </div>
+        </section>
 
-                                        <div id="funding-investment-details" class="course-detail-expanded">
-                        <h4>Funding & Investment Readiness: Attract the Capital You Need</h4>
-                        <p>Navigate the complex world of startup funding. This course prepares you to confidently seek and secure investment, from understanding investor types to crafting compelling pitches.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Identify suitable funding sources (angel investors, VCs, crowdfunding).</li>
-                            <li>Develop a robust financial model and projection.</li>
-                            <li>Create a winning pitch deck and delivery strategy.</li>
-                            <li>Negotiate term sheets and understand valuation methodologies.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Startup founders, business development managers, and anyone preparing to raise capital for a new or existing venture.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Funding & Investment Readiness</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About the School of Entrepreneurship</h2>
+                    <p>Our entrepreneurship programs are designed to transform innovative ideas into thriving businesses, guided by experienced mentors.</p>
+                </div>
+                <div class="school-about-grid">
+                    <div class="school-about-text">
+                        <div class="about-philosophy">
+                            <h3>Our Philosophy</h3>
+                            <p>We believe that entrepreneurship is a mindset and a skill. Our approach is hands-on, encouraging experimentation, learning from failure, and adapting quickly in dynamic markets.</p>
+                        </div>
+                        <div class="about-differentiators">
+                            <h3>What Sets Us Apart</h3>
+                            <ul>
+                                <li><strong>Incubator-Style Learning:</strong> Work on your own startup idea throughout the program with dedicated support.</li>
+                                <li><strong>Mentor Network:</strong> Gain access to a vast network of successful entrepreneurs, investors, and industry experts.</li>
+                                <li><strong>Pitch & Funding Prep:</strong> Develop compelling pitches and understand how to secure early-stage funding.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="school-about-image">
+                        <img src="https://images.pexels.com/photos/3184307/pexels-photo-3184307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Entrepreneurial Brainstorming">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Why Choose Our School of Entrepreneurship?</h2>
-                    <p>We are committed to providing an unparalleled learning experience for future business leaders.</p>
-                </div>
-                <div class="why-choose-us-grid">
-                    <div class="why-item">
-                        <h4>Expert Faculty</h4>
-                        <p>Learn from seasoned entrepreneurs and academics with real-world success.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Practical Approach</h4>
-                        <p>Our programs emphasize hands-on projects, case studies, and simulations.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Global Network</h4>
-                        <p>Connect with a diverse community of entrepreneurs, mentors, and investors worldwide.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="school-content-section" style="background-color: var(--text-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Entrepreneurship Course Offerings</h2>
+                    <p>Ignite your entrepreneurial spirit with courses tailored to every stage of your startup journey.</p>
+                </div>
+                <div class="course-list-grid">
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Idea Validation & Business Model Canvas">
+                        <div class="course-item-content">
+                            <h3>Idea Validation & BMC</h3>
+                            <p>Learn to rigorously test your business ideas and craft a robust Business Model Canvas.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'idea-validation')">View Details</a>
+                            <div id="idea-validation-details" class="course-detail-expanded">
+                                <h4>Idea Validation & Business Model Canvas</h4>
+                                <p>This course focuses on the critical initial steps of any startup: validating your idea and developing a comprehensive business model. You'll learn methodologies for market research, customer interviews, competitor analysis, and how to effectively use the Business Model Canvas to articulate your venture's core components and value proposition.</p>
+                                <h5>Course Highlights:</h5>
+                                <ul>
+                                    <li>Techniques for effective customer discovery</li>
+                                    <li>Building and iterating on the Business Model Canvas</li>
+                                    <li>Competitive landscape analysis</li>
+                                    <li>Prototyping and Minimum Viable Product (MVP) concepts</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Digital Marketing for Startups">
+                        <div class="course-item-content">
+                            <h3>Digital Marketing for Startups</h3>
+                            <p>Master essential digital marketing strategies to reach your target audience and grow your startup.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'digital-marketing')">View Details</a>
+                            <div id="digital-marketing-details" class="course-detail-expanded">
+                                <h4>Digital Marketing for Startups</h4>
+                                <p>Learn how to effectively market your startup online, even with a limited budget. This course covers a range of digital marketing channels including SEO, social media marketing, content marketing, email marketing, and paid advertising. You'll gain practical skills to attract, engage, and convert your target customers.</p>
+                                <h5>What You'll Gain:</h5>
+                                <ul>
+                                    <li>Strategies for cost-effective customer acquisition</li>
+                                    <li>Content creation and distribution tactics</li>
+                                    <li>Social media engagement best practices</li>
+                                    <li>Analytics and campaign optimization</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Funding Your Startup">
+                        <div class="course-item-content">
+                            <h3>Funding Your Startup</h3>
+                            <p>Navigate the world of startup funding, from bootstrapping to venture capital.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'startup-funding')">View Details</a>
+                            <div id="startup-funding-details" class="course-detail-expanded">
+                                <h4>Funding Your Startup: From Seed to Series A</h4>
+                                <p>This comprehensive course guides you through the various stages and sources of startup funding. You'll learn about bootstrapping, angel investors, crowdfunding, venture capital, and corporate venturing. The course covers how to prepare for fundraising, build an investor-ready pitch deck, and negotiate term sheets.</p>
+                                <h5>Key Topics:</h5>
+                                <ul>
+                                    <li>Understanding different funding rounds</li>
+                                    <li>Developing a compelling pitch and financial projections</li>
+                                    <li>Identifying and approaching potential investors</li>
+                                    <li>Legal aspects of fundraising</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <section id="tech-school" class="school-hero-section tech">
-            <div class="container">
-                <h1>School of Technology</h1>
-                <p class="school-tagline">Empowering the next generation of tech innovators and digital pioneers.</p>
-            </div>
-        </section>
+        <section class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Our Entrepreneurship School?</h2>
+                    <p>We provide the resources and mentorship to turn your ideas into successful ventures.</p>
+                </div>
+                <div class="why-choose-us-grid">
+                    <div class="why-item">
+                        <h4>Action-Oriented Learning</h4>
+                        <p>Focus on building and launching your own project from day one.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Expert Mentorship</h4>
+                        <p>Get personalized guidance from seasoned entrepreneurs and business leaders.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Vibrant Community</h4>
+                        <p>Connect with a network of like-minded founders, co-founders, and industry professionals.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Funding Opportunities</h4>
+                        <p>Access investor networks and guidance on securing capital for your startup.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About Our School of Technology</h2>
-                </div>
-                <div class="school-about-grid">
-                    <div class="about-philosophy">
-                        <h3>Our Philosophy</h3>
-                        <p>The School of Technology is at the forefront of digital education, offering cutting-edge programs in rapidly evolving tech fields. We blend theoretical knowledge with practical application, preparing students for impactful careers in software development, data science, cybersecurity, and more.</p>
-                    </div>
-                    <div class="school-about-image">
-                        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Technology and Coding">
-                    </div>
-                    <div class="about-differentiators">
-                        <h3>What Makes Us Different?</h3>
-                        <ul>
-                            <li><strong>Industry-Relevant Curriculum:</strong> Developed with input from leading tech companies.</li>
-                            <li><strong>Hands-on Labs & Projects:</strong> Gain practical experience with real-world tech challenges.</li>
-                            <li><strong>Career Support:</strong> Dedicated career services for job placement and industry connections.</li>
-                            <li><strong>Cutting-Edge Tools:</strong> Access to the latest software, platforms, and development environments.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-                <section class="school-content-section" style="background-color: var(--text-light);">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our Technology Programs</h2>
-                    <p>Stay ahead in the digital age with our specialized technology courses.</p>
-                </div>
-                <div class="course-list-grid">
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Full-Stack Web Development">
-                        <div class="course-item-content">
-                            <h3>Full-Stack Web Development</h3>
-                            <p>Become proficient in both front-end and back-end web technologies, building dynamic applications.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="web-dev">View Details</button>
-                        </div>
-                    </div>
+        <section id="tech-school" class="school-hero-section tech">
+            <div class="container">
+                <h1>School of Technology</h1>
+                <p class="school-tagline">Pioneering the future by equipping you with the skills to innovate and lead in the digital age.</p>
+            </div>
+        </section>
 
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cybersecurity Fundamentals">
-                        <div class="course-item-content">
-                            <h3>Cybersecurity Fundamentals</h3>
-                            <p>Learn essential principles and practices to protect systems, networks, and data from cyber threats.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="cybersecurity">View Details</button>
-                        </div>
-                    </div>
+        <section class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About the School of Technology</h2>
+                    <p>Our technology programs are at the forefront of digital innovation, offering cutting-edge courses for the tech leaders of tomorrow.</p>
+                </div>
+                <div class="school-about-grid">
+                    <div class="school-about-text">
+                        <div class="about-philosophy">
+                            <h3>Our Philosophy</h3>
+                            <p>We believe in hands-on, project-based learning. Our philosophy centers on empowering individuals to not just understand technology, but to build, innovate, and solve real-world problems with it.</p>
+                        </div>
+                        <div class="about-differentiators">
+                            <h3>What Sets Us Apart</h3>
+                            <ul>
+                                <li><strong>Cutting-Edge Curriculum:</strong> Stay ahead with courses covering the latest technologies and industry best practices.</li>
+                                <li><strong>Practical Projects:</strong> Build a strong portfolio through real-world projects and coding challenges.</li>
+                                <li><strong>Industry Partnerships:</strong> Benefit from collaborations with leading tech companies for internships and job placements.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="school-about-image">
+                        <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Tech Workplace">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="AI & Machine Learning Basics">
-                        <div class="course-item-content">
-                            <h3>AI & Machine Learning Basics</h3>
-                            <p>An introduction to artificial intelligence and machine learning concepts, algorithms, and applications.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="ai-ml">View Details</button>
-                        </div>
-                    </div>
-                </div>
+        <section class="school-content-section" style="background-color: var(--text-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Technology Course Offerings</h2>
+                    <p>Unlock the power of technology with our diverse range of courses.</p>
+                </div>
+                <div class="course-list-grid">
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Full-Stack Web Development">
+                        <div class="course-item-content">
+                            <h3>Full-Stack Web Development</h3>
+                            <p>Become a versatile developer capable of building both front-end and back-end web applications.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'fullstack-dev')">View Details</a>
+                            <div id="fullstack-dev-details" class="course-detail-expanded">
+                                <h4>Full-Stack Web Development Bootcamp</h4>
+                                <p>This intensive bootcamp will transform you into a job-ready full-stack web developer. You'll learn modern front-end frameworks (like React or Vue.js), powerful back-end technologies (Node.js, Python/Django, or Ruby on Rails), databases (SQL/NoSQL), and deployment strategies. Emphasis is placed on building real-world applications and a strong portfolio.</p>
+                                <h5>Skills You'll Master:</h5>
+                                <ul>
+                                    <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                                    <li>Front-end frameworks (e.g., React, Vue.js)</li>
+                                    <li>Back-end development (e.g., Node.js, Express.js)</li>
+                                    <li>Database management (e.g., MongoDB, PostgreSQL)</li>
+                                    <li>Version control (Git/GitHub) and deployment</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data Science with Python">
+                        <div class="course-item-content">
+                            <h3>Data Science with Python</h3>
+                            <p>Learn to analyze, visualize, and interpret data using Python for informed decision-making.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'data-science')">View Details</a>
+                            <div id="data-science-details" class="course-detail-expanded">
+                                <h4>Data Science with Python</h4>
+                                <p>This course introduces you to the exciting field of data science using Python. You'll learn essential data manipulation, analysis, and visualization techniques with libraries like Pandas, NumPy, and Matplotlib. The curriculum also covers statistical analysis, an introduction to machine learning algorithms, and how to draw actionable insights from data sets.</p>
+                                <h5>Course Content:</h5>
+                                <ul>
+                                    <li>Python fundamentals for data science</li>
+                                    <li>Data cleaning and preprocessing</li>
+                                    <li>Exploratory Data Analysis (EDA) and visualization</li>
+                                    <li>Statistical inference and hypothesis testing</li>
+                                    <li>Introduction to predictive modeling</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/5863391/pexels-photo-5863391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cybersecurity Fundamentals">
+                        <div class="course-item-content">
+                            <h3>Cybersecurity Fundamentals</h3>
+                            <p>Build a strong foundation in cybersecurity to protect systems and data from modern threats.</p>
+                            <a href="#" class="btn btn-primary" onclick="showCourseDetails(event, 'cybersecurity-fundamentals')">View Details</a>
+                            <div id="cybersecurity-fundamentals-details" class="course-detail-expanded">
+                                <h4>Cybersecurity Fundamentals</h4>
+                                <p>Develop a fundamental understanding of cybersecurity principles and practices. This course covers common cyber threats, vulnerabilities, network security, cryptography, and best practices for protecting digital assets. It's an ideal starting point for anyone interested in a career in cybersecurity or for professionals needing to enhance their digital security awareness.</p>
+                                <h5>Learning Outcomes:</h5>
+                                <ul>
+                                    <li>Understanding common cyberattack vectors</li>
+                                    <li>Network security concepts and firewalls</li>
+                                    <li>Introduction to encryption and digital forensics</li>
+                                    <li>Incident response and risk management basics</li>
+                                </ul>
+                                <button class="btn btn-primary enroll-button">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                <div id="tech-course-details-container">
-                                        <div id="web-dev-details" class="course-detail-expanded">
-                        <h4>Full-Stack Web Development: Build Modern Web Applications</h4>
-                        <p>Become a versatile web developer by mastering both front-end user interfaces and back-end server logic and databases. This immersive program prepares you for the demands of the modern web industry.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Develop responsive UIs using HTML, CSS, and modern JavaScript frameworks (e.g., React, Angular, Vue).</li>
-                            <li>Build robust server-side applications with Node.js, Python/Django, or Ruby on Rails.</li>
-                            <li>Manage databases (SQL and NoSQL) and integrate with APIs.</li>
-                            <li>Implement best practices for security, deployment, and performance optimization.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Aspiring web developers, software engineers, and anyone looking to gain comprehensive full-stack development skills.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Full-Stack Web Development</button>
-                    </div>
+        <section class="school-content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Our Technology School?</h2>
+                    <p>We prepare you for the in-demand roles of the future with practical, cutting-edge tech education.</p>
+                </div>
+                <div class="why-choose-us-grid">
+                    <div class="why-item">
+                        <h4>Hands-On Projects</h4>
+                        <p>Gain practical experience by building real-world applications and solving complex tech challenges.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Industry-Relevant Skills</h4>
+                        <p>Our curriculum is designed with input from tech leaders to ensure you learn what's needed in the job market.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Career Support</h4>
+                        <p>Benefit from career coaching, resume workshops, and connections to tech companies for job placement.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Innovation Hub</h4>
+                        <p>Join a community that fosters innovation, collaboration, and continuous learning in technology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                        <div id="cybersecurity-details" class="course-detail-expanded">
-                        <h4>Cybersecurity Fundamentals: Protecting Our Digital World</h4>
-                        <p>In an increasingly digital landscape, cybersecurity expertise is crucial. This course provides a strong foundation in protecting digital assets, identifying vulnerabilities, and responding to security incidents.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Understand common cyber threats, attack vectors, and defense mechanisms.</li>
-                            <li>Learn network security, cryptography, and application security principles.</li>
-                            <li>Develop skills in incident response, risk management, and compliance.</li>
-                            <li>Explore ethical hacking concepts for defensive purposes.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>IT professionals, network administrators, and individuals interested in a career in cybersecurity or enhancing their digital security knowledge.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Cybersecurity Fundamentals</button>
-                    </div>
+        <section id="contact-form" class="form-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get in Touch</h2>
+                    <p>Have questions about our schools, courses, or events? Reach out to us!</p>
+                </div>
+                <div class="form-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="name-contact">Your Name:</label>
+                            <input type="text" id="name-contact" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-contact">Your Email:</label>
+                            <input type="email" id="email-contact" name="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject-contact">Subject:</label>
+                            <input type="text" id="subject-contact" name="subject" placeholder="Inquiry about courses, partnership, etc." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-contact">Your Message:</label>
+                            <textarea id="message-contact" name="message" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-                                        <div id="ai-ml-details" class="course-detail-expanded">
-                        <h4>AI & Machine Learning Basics: Understanding Intelligent Systems</h4>
-                        <p>Step into the world of artificial intelligence and machine learning. This introductory course demystifies key concepts, algorithms, and applications that are driving innovation across industries.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Grasp the core principles of AI, machine learning, and deep learning.</li>
-                            <li>Understand different types of machine learning algorithms (supervised, unsupervised).</li>
-                            <li>Explore real-world applications of AI in business, healthcare, and technology.</li>
-                            <li>Familiarize yourself with popular AI/ML tools and frameworks.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Business leaders, data analysts, technical professionals, and anyone curious about the foundational concepts of AI and Machine Learning.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in AI & Machine Learning Basics</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </main>
 
-                <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Why Choose Our School of Technology?</h2>
-                    <p>We offer an immersive and cutting-edge learning environment for tech enthusiasts.</p>
-                </div>
-                <div class="why-choose-us-grid">
-                    <div class="why-item">
-                        <h4>Industry-Led Programs</h4>
-                        <p>Curriculum designed and taught by leading experts in the tech industry.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>State-of-the-Art Labs</h4>
-                        <p>Access to modern facilities and tools for hands-on experience in various tech domains.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Innovation Hub</h4>
-                        <p>Be part of a community that fosters innovation, research, and development in technology.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Your Institute. All rights reserved.</p>
+        </div>
+    </footer>
 
-                <section id="finance-school" class="school-hero-section finance">
-            <div class="container">
-                <h1>School of Finance</h1>
-                <p class="school-tagline">Shaping astute financial professionals and savvy investors for tomorrow's economy.</p>
-            </div>
-        </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainHeader = document.getElementById('main-header');
+            const entrepreneurBanner = document.getElementById('entrepreneur-banner');
 
-        <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About Our School of Finance</h2>
-                </div>
-                <div class="school-about-grid">
-                    <div class="about-philosophy">
-                        <h3>Our Philosophy</h3>
-                        <p>The School of Finance offers rigorous programs designed to equip students with a deep understanding of financial markets, corporate finance, investment strategies, and risk management. We combine academic excellence with practical insights to prepare you for a dynamic career in the global financial sector.</p>
-                    </div>
-                    <div class="school-about-image">
-                        <img src="https://images.pexels.com/photos/7350569/pexels-photo-7350569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Financial Graph">
-                    </div>
-                    <div class="about-differentiators">
-                        <h3>What Makes Us Different?</h3>
-                        <ul>
-                            <li><strong>Market-Driven Curriculum:</strong> Stay current with the latest trends and tools in finance.</li>
-                            <li><strong>Experienced Practitioners:</strong> Learn from professionals with extensive experience in finance.</li>
-                            <li><strong>Simulation Labs:</strong> Practice trading and financial analysis in realistic environments.</li>
-                            <li><strong>Accredited Programs:</strong> Our courses meet industry standards and regulatory requirements.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+            // Hide the banner by default
+            entrepreneurBanner.classList.remove('visible');
 
-                <section class="school-content-section" style="background-color: var(--text-light);">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our Finance Programs</h2>
-                    <p>Develop your financial acumen with our specialized courses in wealth management, corporate finance, and more.</p>
-                </div>
-                <div class="course-list-grid">
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/4386377/pexels-photo-4386377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Personal Wealth Management">
-                        <div class="course-item-content">
-                            <h3>Personal Wealth Management</h3>
-                            <p>Strategies for individuals to grow, protect, and manage their personal finances and investments.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="wealth-management">View Details</button>
-                        </div>
-                    </div>
-
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/704975/pexels-photo-704975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Corporate Finance & Valuation">
-                        <div class="course-item-content">
-                            <h3>Corporate Finance & Valuation</h3>
-                            <p>Analyze financial decisions for businesses, including capital budgeting, financing, and valuation.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="corp-finance">View Details</button>
-                        </div>
-                    </div>
-
-                                        <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/3381664/pexels-photo-3381664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Financial Risk Management">
-                        <div class="course-item-content">
-                            <h3>Financial Risk Management</h3>
-                            <p>Identify, assess, and mitigate financial risks in various market environments.</p>
-                            <button class="btn btn-primary view-details-btn" data-course="risk-management">View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                                <div id="finance-course-details-container">
-                                        <div id="wealth-management-details" class="course-detail-expanded">
-                        <h4>Personal Wealth Management: Secure Your Financial Future</h4>
-                        <p>Take control of your personal finances and build lasting wealth. This course covers essential strategies for budgeting, saving, investing, and retirement planning tailored for individual success.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Develop a comprehensive personal financial plan.</li>
-                            <li>Understand various investment vehicles (stocks, bonds, mutual funds, real estate).</li>
-                            <li>Learn strategies for debt management and credit optimization.</li>
-                            <li>Plan for retirement, taxes, and estate with confidence.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Individuals at any stage of life looking to improve their financial literacy and achieve long-term financial goals.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Personal Wealth Management</button>
-                    </div>
-
-                                        <div id="corp-finance-details" class="course-detail-expanded">
-                        <h4>Corporate Finance & Valuation: Driving Business Value</h4>
-                        <p>Gain expertise in the financial decision-making processes of corporations. This course delves into capital structure, investment appraisal, dividend policy, and business valuation techniques.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Master discounted cash flow (DCF) and relative valuation methods.</li>
-                            <li>Analyze capital budgeting decisions and project feasibility.</li>
-                            <li>Understand mergers, acquisitions, and corporate restructuring.</li>
-                            <li>Evaluate financing options and their impact on firm value.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Finance professionals, investment bankers, corporate strategists, and business owners seeking to enhance their corporate finance knowledge.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Corporate Finance & Valuation</button>
-                    </div>
-
-                                        <div id="risk-management-details" class="course-detail-expanded">
-                        <h4>Financial Risk Management: Navigating Uncertainty</h4>
-                        <p>Develop the skills to identify, measure, and manage financial risks in various contexts. This course provides a robust framework for understanding and mitigating market, credit, operational, and liquidity risks.</p>
-                        <h5>Key Learning Outcomes:</h5>
-                        <ul>
-                            <li>Understand the categories and sources of financial risk.</li>
-                            <li>Apply quantitative and qualitative risk assessment techniques.</li>
-                            <li>Implement risk mitigation strategies, including derivatives and hedging.</li>
-                            <li>Explore regulatory frameworks and compliance in risk management.</li>
-                        </ul>
-                        <h5>Who is this course for?</h5>
-                        <p>Financial analysts, risk managers, portfolio managers, and anyone responsible for managing financial exposure within an organization.</p>
-                        <button class="btn btn-primary enroll-button">Enroll in Financial Risk Management</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Why Choose Our School of Finance?</h2>
-                    <p>We provide a comprehensive and practical education to excel in the world of finance.</p>
-                </div>
-                <div class="why-choose-us-grid">
-                    <div class="why-item">
-                        <h4>Industry Connectivity</h4>
-                        <p>Strong ties with financial institutions for internships and career opportunities.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Experiential Learning</h4>
-                        <p>Real-world case studies and market simulations to hone your financial skills.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Global Perspective</h4>
-                        <p>Curriculum covers international finance and prepares you for global markets.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <section id="contact-form" class="form-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Get in Touch</h2>
-                    <p>Have questions or need more information? We're here to help.</p>
-                </div>
-                <div class="form-container">
-                    <form>
-                        <div class="form-group">
-                            <label for="contact-name">Your Name:</label>
-                            <input type="text" id="contact-name" name="contact_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-email">Your Email:</label>
-                            <input type="email" id="contact-email" name="contact_email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-subject">Subject:</label>
-                            <input type="text" id="contact-subject" name="contact_subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message">Your Message:</label>
-                            <textarea id="contact-message" name="contact_message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 Your Institute. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.getElementById('main-header');
-            const heroSection = document.getElementById('hero');
-            const specializationBanner = document.getElementById('entrepreneur-banner');
-
-            // Observe the hero section to apply scrolled class to header
-            const heroObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        header.classList.remove('scrolled');
-                        specializationBanner.classList.remove('visible'); // Hide banner on hero
-                        header.style.background = 'rgba(255, 255, 255, 0)'; // Make header transparent on hero
-                        header.style.borderBottom = 'none';
-                        header.querySelector('.logo img').style.filter = 'invert(0%)'; // White logo
-                        header.querySelectorAll('.main-nav a').forEach(link => {
-                            link.style.color = 'var(--text-light)'; // White nav links
-                            link.style.textShadow = '0 1px 5px rgba(0,0,0,0.4)';
-                        });
-                        header.querySelector('.btn-primary').style.backgroundColor = 'var(--primary-color)';
-                        header.querySelector('.btn-primary').style.color = 'var(--text-dark)';
-
-                    } else {
-                        header.classList.add('scrolled');
-                        specializationBanner.classList.add('visible'); // Show banner when scrolled off hero
-                        header.style.background = 'rgba(255, 255, 255, 0.9)'; // Opaque header
-                        header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
-                        header.querySelector('.logo img').style.filter = 'invert(100%)'; // Dark logo
-                        header.querySelectorAll('.main-nav a').forEach(link => {
-                            link.style.color = 'var(--text-dark)'; // Dark nav links
-                            link.style.textShadow = 'none';
-                        });
-                        // Ensure button primary color remains the same as defined in CSS
-                        header.querySelector('.btn-primary').style.backgroundColor = ''; // Revert to CSS
-                        header.querySelector('.btn-primary').style.color = ''; // Revert to CSS
-                    }
-                });
-            }, { threshold: 0.1 }); // Trigger when 10% of hero is visible
-
-            heroObserver.observe(heroSection);
-
-            // Smooth scrolling for all internal links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Course Details Toggle Functionality
-            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
-            const allCourseDetails = document.querySelectorAll('.course-detail-expanded');
-
-            viewDetailsButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetCourseId = this.dataset.course + '-details';
-                    const targetCourseDetails = document.getElementById(targetCourseId);
-
-                    allCourseDetails.forEach(detail => {
-                        if (detail.id === targetCourseId) {
-                            detail.classList.toggle('show');
-                        } else {
-                            detail.classList.remove('show');
-                        }
-                    });
-
-                    // Scroll to the opened course details for better UX
-                    if (targetCourseDetails.classList.contains('show')) {
-                        targetCourseDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-        });
-    </script>
+            // Function to toggle course details
+            window.showCourseDetails = function(event, id) {
+                event.preventDefault(); // Prevent default link behavior
+                const detailsElement = document.getElementById(id + '-details');
+                // Toggle 'show' class
+                detailsElement.classList.toggle('show');
+                // Scroll to the opened section if it's not fully in view
+                if (detailsElement.classList.contains('show')) {
+                    detailsElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            };
+        });
+    </script>
 </body>
 </html>
