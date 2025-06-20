@@ -115,19 +115,20 @@
             top: 0;
             left: 0;
             z-index: 1000;
-            /* Changed: Initial state is black with blur */
+            /* The ONLY change: initial state is black with blur */
             background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
             backdrop-filter: blur(10px); /* Glass/blur effect */
             -webkit-backdrop-filter: blur(10px); /* Safari support */
             transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
             box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* No shadow initially */
-            padding: 15px 0; /* Reverted to original padding */
+            padding: 15px 0;
         }
 
         .main-header.scrolled {
-            /* Reverted to original scrolled state properties */
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.95); /* Original white scrolled state */
             box-shadow: 0 2px 10px var(--shadow-medium);
+            backdrop-filter: none; /* No blur when scrolled */
+            -webkit-backdrop-filter: none;
         }
 
         .main-header .container {
@@ -142,14 +143,12 @@
 
         .main-header .logo img {
             height: 50px;
-            /* Reverted logo filter transition to original */
             transition: filter 0.3s ease;
-            filter: invert(100%); /* Keeps logo white against the initial black background */
+            filter: invert(100%); /* Original: Logo white against initial dark background */
         }
 
         .main-header.scrolled .logo img {
-            /* Reverted logo filter for scrolled state to original */
-            filter: invert(0%); /* Makes logo original color (dark) when scrolled */
+            filter: invert(0%); /* Original: Logo dark when scrolled to white background */
         }
 
         .main-nav ul {
@@ -165,7 +164,7 @@
         }
 
         .main-nav ul li a {
-            color: var(--white-color);
+            color: var(--white-color); /* Original: Nav links white against initial dark background */
             font-weight: 600;
             font-size: 1.1em;
             padding: 5px 0;
@@ -173,10 +172,8 @@
         }
 
         .main-header.scrolled .main-nav ul li a {
-            /* Reverted nav link color for scrolled state */
-            color: var(--dark-bg);
+            color: var(--dark-bg); /* Original: Nav links dark when scrolled to white background */
         }
-
 
         .main-nav ul li a:hover,
         .main-nav ul li.dropdown:hover > a {
@@ -187,7 +184,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: var(--white-color); /* Reverted to original dropdown background */
+            background-color: var(--white-color); /* Original: Dropdown background white */
             min-width: 200px;
             box-shadow: 0px 8px 16px 0px var(--shadow-medium);
             z-index: 1;
@@ -207,7 +204,7 @@
         }
 
         .dropdown-content a {
-            color: var(--text-color) !important; /* Reverted to original dropdown link color */
+            color: var(--text-color) !important; /* Original: Dropdown link color dark */
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -858,14 +855,14 @@
                 position: static; /* Allows dropdown to flow naturally */
                 width: 100%;
                 box-shadow: none;
-                background-color: var(--white-color); /* Reverted */
+                background-color: var(--white-color);
                 border-radius: 0;
                 transform: translateY(0);
                 opacity: 1;
             }
 
             .dropdown-content a {
-                color: var(--text-color) !important; /* Reverted */
+                color: var(--text-color) !important;
             }
 
             .hero-content h1 {
@@ -1414,274 +1411,4 @@
                     </div>
 
                     <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cloud Computing Course">
-                        <div class="course-item-content">
-                            <h3>Cloud Computing with AWS</h3>
-                            <p>Master Amazon Web Services (AWS) for scalable infrastructure, deployment, and cloud architecture.</p>
-                            <button class="btn btn-primary learn-more-btn" data-course-id="tech-aws">Learn More</button>
-                        </div>
-                    </div>
-                    <div id="tech-aws-details" class="course-detail-expanded">
-                        <h4>Cloud Computing with AWS - Detailed Information</h4>
-                        <p>This comprehensive course provides a hands-on introduction to Amazon Web Services (AWS), the world's leading cloud platform. You will learn to deploy, manage, and scale applications using core AWS services such as EC2, S3, RDS, Lambda, and VPC. The curriculum covers cloud architecture best practices, security in the cloud, and cost optimization strategies. Designed for IT professionals, developers, and solutions architects, this course will prepare you to leverage the power of cloud computing for modern application development and infrastructure management.</p>
-
-                        <h5>Curriculum Outline</h5>
-                        <ul>
-                            <li>Module 1: Introduction to Cloud Computing & AWS Fundamentals</li>
-                            <li>Module 2: Compute Services (EC2, Lambda, Elastic Beanstalk)</li>
-                            <li>Module 3: Storage Services (S3, EBS, Glacier)</li>
-                            <li>Module 4: Networking & Content Delivery (VPC, Route 53, CloudFront)</li>
-                            <li>Module 5: Database Services (RDS, DynamoDB)</li>
-                            <li>Module 6: Security, Identity, & Compliance (IAM, Security Groups)</li>
-                            <li>Module 7: Management & Monitoring (CloudWatch, CloudFormation)</li>
-                            <li>Module 8: Serverless Architectures & Microservices</li>
-                            <li>Module 9: Cost Optimization & Best Practices</li>
-                        </ul>
-
-                        <h5>Key Learning Outcomes</h5>
-                        <ul>
-                            <li>Deploy and manage virtual servers on EC2.</li>
-                            <li>Store and retrieve data using S3 and other storage services.</li>
-                            <li>Configure secure and isolated networks with VPC.</li>
-                            <li>Implement serverless functions using AWS Lambda.</li>
-                            <li>Manage relational and NoSQL databases on AWS.</li>
-                            <li>Understand AWS security best practices and IAM.</li>
-                            <li>Monitor and optimize AWS resource usage and costs.</li>
-                        </ul>
-
-                        <h5>Target Audience</h5>
-                        <p>IT administrators, software developers, solutions architects, and anyone looking to gain practical skills in cloud infrastructure and services on AWS.</p>
-
-                        <h5>Course Format</h5>
-                        <p>The course features extensive video lectures, interactive demos, and hands-on labs within the AWS console. Each module concludes with a practical project, and a final capstone project allows you to build a complete cloud solution.</p>
-
-                        <h5>Why Choose This Course?</h5>
-                        <div class="why-choose-us-grid">
-                            <div class="why-course-item">
-                                <h4>Hands-On AWS Experience</h4>
-                                <p>Gain practical skills by working directly in the AWS console through guided labs and projects.</p>
-                            </div>
-                            <div class="why-course-item">
-                                <h4>Prepare for AWS Certifications</h4>
-                                <p>The curriculum aligns with fundamental AWS certification paths, boosting your career prospects.</p>
-                            </div>
-                            <div class="why-course-item">
-                                <h4>Master Cloud Architecture</h4>
-                                <p>Learn best practices for designing scalable, secure, and resilient cloud-based applications.</p>
-                            </div>
-                            <div class="why-course-item">
-                                <h4>Future-Proof Your Career</h4>
-                                <p>Cloud computing skills are in high demand and essential for the modern IT landscape.</p>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary enroll-button">Enroll Now</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="school-content-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Why Choose Our School of Technology?</h2>
-                    <p>We're committed to your success in the tech industry.</p>
-                </div>
-                <div class="why-choose-us-grid">
-                    <div class="why-item">
-                        <h4>Industry-Recognized Certifications</h4>
-                        <p>Our programs are designed to prepare you for leading industry certifications, boosting your resume.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Expert-Led Live Sessions & Support</h4>
-                        <p>Learn directly from seasoned professionals through interactive live sessions and dedicated support channels.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Robust Career Placement Assistance</h4>
-                        <p>Benefit from our extensive network and personalized coaching to land your dream job in tech.</p>
-                    </div>
-                    <div class="why-item">
-                        <h4>Flexible Learning Paths</h4>
-                        <p>Choose between self-paced modules or structured cohorts to fit your busy schedule.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="events-list" class="events-section-new">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Upcoming Events</h2>
-                    <p>Join us for our live workshops and networking sessions.</p>
-                </div>
-                <div class="events-list">
-                    <div class="event-item-new">
-                        <div class="event-date-new">
-                            <span class="month">JUL</span>
-                            <span class="day">15</span>
-                        </div>
-                        <div class="event-details-new">
-                            <h3>Workshop: The Future of Work</h3>
-                            <p>A deep dive into remote team management and productivity tools. (Online)</p>
-                        </div>
-                        <a href="#contact-form" class="btn btn-primary">Register Now</a>
-                    </div>
-                    <div class="event-item-new">
-                        <div class="event-date-new">
-                            <span class="month">AUG</span>
-                            <span class="day">02</span>
-                        </div>
-                        <div class="event-details-new">
-                            <h3>Networking Night: Founder's Mix</h3>
-                            <p>Connect with other entrepreneurs and investors. (In-Person)</p>
-                        </div>
-                        <a href="#contact-form" class="btn btn-primary">Get Tickets</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact-form" class="form-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Contact Us</h2>
-                    <p>Have a question or want to work together? Drop us a line.</p>
-                </div>
-                <div class="form-container">
-                    <form>
-                        <div class="form-group">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="contact-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="contact-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-main">Message</label>
-                            <textarea id="message-main" name="message-main" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>© 2024 Your Institute. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const banner = document.getElementById('entrepreneur-banner');
-            // The school links for dropdown are kept for consistency, but
-            // their direct hrefs are to the school sections on THIS page.
-            // The banner visibility is now mainly driven by the dropdown clicks for demonstration.
-            const schoolLinks = {
-                entrepreneurship: document.querySelector('.dropdown-content a[href="#entrepreneurship-school"]'),
-                tech: document.querySelector('.dropdown-content a[href="#tech-school"]'),
-                finance: document.querySelector('.dropdown-content a[href="#finance-school"]')
-            };
-
-            // Set up event listeners for dropdown school links to show/hide banner
-            if (schoolLinks.entrepreneurship) {
-                schoolLinks.entrepreneurship.addEventListener('click', (e) => {
-                    banner.textContent = 'School of Entrepreneurship';
-                    banner.classList.add('visible');
-                });
-            }
-            if (schoolLinks.tech) {
-                schoolLinks.tech.addEventListener('click', (e) => {
-                    banner.textContent = 'School of Technology';
-                    banner.classList.add('visible');
-                });
-            }
-            if (schoolLinks.finance) {
-                schoolLinks.finance.addEventListener('click', (e) => {
-                    banner.textContent = 'School of Finance';
-                    banner.classList.add('visible');
-                });
-            }
-
-            // Header is set to 'scrolled' state immediately for this sub-page for consistent appearance.
-            const headerElement = document.getElementById('main-header');
-            // Reverted back to the original JS which immediately adds 'scrolled' class
-            headerElement.classList.add('scrolled');
-            // Reverted logo filter change back to original immediate application
-            headerElement.querySelector('.logo img').style.filter = 'invert(100%)';
-
-            // Removed the window scroll listener that dynamically added/removed 'scrolled' class,
-            // as the original intent was for it to be 'scrolled' by default on sub-pages.
-            // If you want the header to *change* on scroll, we'd re-add that.
-
-            // Smooth scrolling for navigation links and other internal anchors
-            document.querySelectorAll('nav a[href^="#"], .btn[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        // Adjust scroll position to account for sticky header
-                        const headerOffset = headerElement.offsetHeight;
-                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                        // Add some padding to ensure section title is not hidden under sticky header
-                        const offsetPosition = elementPosition - headerOffset - 20;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                        // After scrolling, if it's a dropdown link, remove the banner after a short delay
-                        if (this.closest('.dropdown-content')) {
-                            setTimeout(() => {
-                                banner.classList.remove('visible');
-                            }, 1000); // Hide banner after 1 second
-                        }
-                    }
-                });
-            });
-
-            // JavaScript for "Learn More" buttons to expand/collapse course details
-            document.querySelectorAll('.learn-more-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const courseId = this.dataset.courseId;
-                    const detailsElement = document.getElementById(courseId + '-details');
-
-                    if (detailsElement) {
-                        // Toggle 'show' class
-                        detailsElement.classList.toggle('show');
-
-                        if (detailsElement.classList.contains('show')) {
-                            this.textContent = 'Show Less';
-                            // Scroll to the expanded section after a slight delay for animation
-                            setTimeout(() => {
-                                const headerOffset = headerElement.offsetHeight;
-                                const elementPosition = detailsElement.getBoundingClientRect().top + window.pageYOffset;
-                                const offsetPosition = elementPosition - headerOffset - 20;
-
-                                window.scrollTo({
-                                    top: offsetPosition,
-                                    behavior: "smooth"
-                                });
-                            }, 300); // Adjust delay as needed
-                        } else {
-                            this.textContent = 'Learn More';
-                        }
-                    }
-                });
-            });
-
-            // Added for the original homepage hero background animation visibility
-            // This is applied only if the hero section has the hero-background element
-            const mainHeroBackground = document.querySelector('#hero .hero-background');
-            if (mainHeroBackground) {
-                mainHeroBackground.style.backgroundImage = 'url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg)';
-            }
-        });
-    </script>
-</body>
-</html>
+                        <img src="
