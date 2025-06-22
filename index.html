@@ -184,6 +184,8 @@
         .logo img {
             height: 85px; 
             transition: filter 0.4s ease;
+            filter: invert(100%):  /* Logo dark on inner pages*/
+            
         }
         .main-header.scrolled .logo img {
             filter: invert(100%);
@@ -215,9 +217,7 @@
             border: none;
         }
         .main-header.scrolled .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            border: none;
+            /* No change */
         }
 
         .dropdown { position: relative; }
