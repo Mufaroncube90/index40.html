@@ -553,75 +553,75 @@
         }
 
         /* --- NEW: General Form Styling (for Assessment and Contact) --- */
-.form-section {
-    background-color: var(--light-bg); /* Use light-bg for forms */
-}
-.form-section:nth-of-type(even) { /* Alternate background for sections */
-    background-color: var(--text-light);
-}
-
-.form-container {
-    max-width: 700px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-}
-
-/* This rule makes the form a flex container, essential for button centering */
-.form-container form {
-    display: flex;          /* Makes the form a flex container */
-    flex-direction: column; /* Stacks its direct children (like form-groups and the button) vertically */
-    gap: 20px;              /* Adds 20px of space between all direct children of the form */
-}
-
-.form-group {
-    margin-bottom: 0; /* Set to 0 because 'gap' on the parent form now handles spacing */
-}
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: inherit; /* Use body font */
-    font-size: 1rem;
-    color: var(--text-dark);
-    background-color: #fff;
-}
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.checkbox-group {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.checkbox-item {
-    display: flex;
-    align-items: center;
-}
-.checkbox-item input {
-    width: auto;
-    margin-right: 8px;
-    transform: scale(1.2); /* Make checkbox slightly larger */
-}
-
-/* This rule centers the button horizontally within the flex form */
-.form-container form .btn-primary {
-    align-self: center; /* Centers the button horizontally within the flex column */
-    width: auto;        /* Allows the button to size to its content */
-    margin-top: 20px;   /* Add some space above the button, if needed */
-}
+            .form-section {
+                background-color: var(--light-bg); /* Use light-bg for forms */
+            }
+            .form-section:nth-of-type(even) { /* Alternate background for sections */
+                background-color: var(--text-light);
+            }
+            
+            .form-container {
+                max-width: 700px;
+                margin: 0 auto;
+                background: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            }
+            
+            /* This rule makes the form a flex container, essential for button centering */
+            .form-container form {
+                display: flex;          /* Makes the form a flex container */
+                flex-direction: column; /* Stacks its direct children (like form-groups and the button) vertically */
+                gap: 20px;              /* Adds 20px of space between all direct children of the form */
+            }
+            
+            .form-group {
+                margin-bottom: 0; /* Set to 0 because 'gap' on the parent form now handles spacing */
+            }
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+            }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-family: inherit; /* Use body font */
+                font-size: 1rem;
+                color: var(--text-dark);
+                background-color: #fff;
+            }
+            .form-group textarea {
+                min-height: 120px;
+                resize: vertical;
+            }
+            
+            .checkbox-group {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .checkbox-item {
+                display: flex;
+                align-items: center;
+            }
+            .checkbox-item input {
+                width: auto;
+                margin-right: 8px;
+                transform: scale(1.2); /* Make checkbox slightly larger */
+            }
+            
+            /* This rule centers the button horizontally within the flex form */
+            .form-container form .btn-primary {
+                align-self: center; /* Centers the button horizontally within the flex column */
+                width: auto;        /* Allows the button to size to its content */
+                margin-top: 20px;   /* Add some space above the button, if needed */
+            }
         /* --- NEW: Courses Section (General) --- */
         .general-courses-section {
             background: var(--text-light); /* Matching previous section styles */
@@ -712,13 +712,60 @@
         .event-details-new h3 { margin-bottom: 0.5rem; }
         .event-details-new p { margin-bottom: 0; color: #666; }
 
-        /* --- Footer (retained) --- */
-        .main-footer {
-            background: var(--dark-bg);
-            color: var(--text-secondary);
-            text-align: center;
-            padding: 20px 0;
-        }
+        /* --- Footer --- */
+            .footer {
+                background-color: var(--dark-bg);
+                color: var(--text-light); /* Using text-light for better visibility on dark background */
+                padding: 50px 0;
+                text-align: center;
+            }
+        
+            .footer-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        
+            .footer-section {
+                flex: 1;
+                min-width: 250px;
+                max-width: 300px;
+                text-align: left;
+            }
+        
+                .footer-section h3 {
+                    color: var(--primary-color);
+                    margin-bottom: 20px;
+                    font-size: 1.3rem;
+                }
+        
+                .footer-section p,
+                .footer-section a {
+                    color: #ccc;
+                    line-height: 1.8;
+                    font-size: 0.95rem;
+                }
+        
+                .footer-section a:hover {
+                    color: var(--text-light);
+                }
+        
+            .footer-bottom {
+                border-top: 1px solid #333;
+                padding-top: 20px;
+                margin-top: 40px;
+                font-size: 0.9rem;
+                color: #aaa;
+            }
+        
+            /* Styles for the footer logo */
+            .footer-logo {
+                height: 60px; /* Adjust the height as needed */
+                margin-bottom: 20px; /* Space between logo and text */
+                margin-left: 0; /* Ensures it aligns left within its section */
+            }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
@@ -1031,12 +1078,6 @@
                         <label for="howHeard">How did you hear about us?</label>
                         <input type="text" id="howHeard" name="howHeard">
                     </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">Subscribe to our newsletter</label>
-                    </div>
-
                     <button type="submit" class="btn btn-primary">Submit Registration</button>
                 </form>
             </div>
@@ -1553,12 +1594,36 @@
         </section>
 
     </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 Your Institute. All rights reserved.</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section about">
+                        <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Your Institute Logo" class="footer-logo">
+        
+                        <h3>About Us</h3>
+                        <p>Your Institute is dedicated to providing cutting-edge education in various fields, empowering students for future success.</p>
+                        </div>
+                    <div class="footer-section links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#about-section">About</a></li>
+                            <li><a href="#contact-form">Contact</a></li>
+                            <li><a href="#finance-school">School of Finance</a></li>
+                            <li><a href="#entrepreneurship-school">School of Entrepreneurship</a></li>
+                            <li><a href="#technology-school">School of Technology</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section contact">
+                        <h3>Contact Info</h3>
+                        <p>Email: info@bambooinstitute.com</p>
+                        <p>Phone: +123 456 7890</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Your Institute. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1796,7 +1861,7 @@
             const newsMessages = [
                 "🎉 New Course Alert: Master the Fundamentals of AI for Business - Enroll Now!",
                 "🗓️ Upcoming Event: Startup Pitch Competition - July 20th! Register to attend.",
-                "⭐ Success Story: Our alumni, [Alumni Name], just secured R5M in funding!",
+                "⭐ Success Story: Our alumni, Alumni Top Achiever, just secured R5M in funding!",
                 "📚 New Articles on Financial Literacy in our Blog. Check them out!",
                 "✨ Limited Seats Available for Advanced Data Science Bootcamp - Don't miss out!"
             ];
