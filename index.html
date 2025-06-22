@@ -1824,107 +1824,170 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const banner = document.getElementById('entrepreneur-banner');
-            // The school links for dropdown are kept for consistency, but
-            // their direct hrefs are to the school sections on THIS page.
-            // The banner visibility is now mainly driven by the dropdown clicks for demonstration.
-            const schoolLinks = {
-                entrepreneurship: document.querySelector('.dropdown-content a[href="#entrepreneurship-school"]'),
-                tech: document.querySelector('.dropdown-content a[href="#tech-school"]'),
-                finance: document.querySelector('.dropdown-content a[href="#finance-school"]')
-            };
+    const banner = document.getElementById('entrepreneur-banner');
+    // The school links for dropdown are kept for consistency, but
+    // their direct hrefs are to the school sections on THIS page.
+    // The banner visibility is now mainly driven by the dropdown clicks for demonstration.
+    const schoolLinks = {
+        entrepreneurship: document.querySelector('.dropdown-content a[href="#entrepreneurship-school"]'),
+        tech: document.querySelector('.dropdown-content a[href="#tech-school"]'),
+        finance: document.querySelector('.dropdown-content a[href="#finance-school"]')
+    };
 
-            // Set up event listeners for dropdown school links to show/hide banner
-            if (schoolLinks.entrepreneurship) {
-                schoolLinks.entrepreneurship.addEventListener('click', (e) => {
-                    banner.textContent = 'School of Entrepreneurship';
-                    banner.classList.add('visible');
+    // Set up event listeners for dropdown school links to show/hide banner
+    if (schoolLinks.entrepreneurship) {
+        schoolLinks.entrepreneurship.addEventListener('click', (e) => {
+            banner.textContent = 'School of Entrepreneurship';
+            banner.classList.add('visible');
+        });
+    }
+    if (schoolLinks.tech) {
+        schoolLinks.tech.addEventListener('click', (e) => {
+            banner.textContent = 'School of Technology';
+            banner.classList.add('visible');
+        });
+    }
+    if (schoolLinks.finance) {
+        schoolLinks.finance.addEventListener('click', (e) => {
+            banner.textContent = 'School of Finance';
+            banner.classList.add('visible');
+        });
+    }
+
+    // --- START: Added/Modified for Dynamic Header and Text Color on Scroll ---
+
+    const headerElement = document.querySelector('.main-header'); // Use querySelector for class
+    // You MUST identify the "picture" or "hero" section. Let's assume it has an ID, e.g., 'hero-section'
+    // If your large image is directly under a section or div, use its ID/class.
+    // Example: If your main image is inside <section id="hero-section">...</section>
+    const heroSection = document.getElementById('hero-section'); 
+
+    // Error checking for elements
+    if (!headerElement) {
+        console.error("Error: '.main-header' element not found. Check your HTML.");
+        return; // Stop execution if essential element is missing
+    }
+    if (!heroSection) {
+        console.warn("Warning: '#hero-section' element not found. Header scroll might not work as expected.");
+        // If heroSection is missing, we might default to a certain scroll point or not animate.
+        // For now, let's proceed with a default threshold if heroSection is null.
+        // A better approach for a production site would be to ensure heroSection exists.
+    }
+
+    // Remove the line below. The CSS should handle the initial filter based on the presence/absence of 'scrolled' class.
+    // headerElement.querySelector('.logo img').style.filter = 'invert(100%)'; 
+    // And also remove headerElement.classList.add('hero'); unless 'hero' has specific CSS rules for the initial state.
+    // If 'hero' is intended as the initial state, ensure your CSS uses .main-header.hero for initial styles
+    // and .main-header.scrolled for scrolled styles, and that 'hero' is removed when 'scrolled' is added.
+    // For simplicity with your current CSS, we'll stick to just toggling 'scrolled'.
+    // If you want a specific initial class, let's call it 'initial-header-state' and use that.
+    // For now, let's assume the default .main-header styles are the 'initial' state.
+
+    // Function to handle scroll events
+    function handleScroll() {
+        let scrollThreshold = 100; // Default threshold if heroSection is not found or is very small
+
+        if (heroSection) {
+            // Get the bottom position of the hero section relative to the top of the document
+            // We use offsetTop + offsetHeight or getBoundingClientRect().bottom + window.scrollY
+            // getBoundingClientRect().bottom is distance from viewport top to element bottom.
+            // Adding window.scrollY converts it to distance from document top to element bottom.
+            scrollThreshold = heroSection.getBoundingClientRect().bottom + window.scrollY - headerElement.offsetHeight;
+            // Subtract headerElement.offsetHeight to make the transition happen when the *bottom of the header*
+            // crosses the hero section, not the top of the header. Adjust as needed.
+        } else {
+             // If heroSection isn't found, you might want to log a warning or define a default scroll point.
+             // For instance, make it 100vh (viewport height) or a fixed pixel value.
+             // If you want it to be black initially and turn white after a standard scroll,
+             // you can keep a fixed scrollThreshold (e.g., 100px or window.innerHeight * 0.8).
+             console.warn("Hero section not found, using a default scroll threshold.");
+             scrollThreshold = window.innerHeight * 0.7; // Transition after scrolling 70% of viewport height
+        }
+        
+        // Check if the user has scrolled past the calculated threshold
+        if (window.scrollY > scrollThreshold) {
+            headerElement.classList.add('scrolled');
+        } else {
+            headerElement.classList.remove('scrolled');
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Call handleScroll once on load to set initial state correctly
+    // This is important for when the page loads already scrolled down (e.g., from a deep link)
+    handleScroll();
+
+    // --- END: Added/Modified for Dynamic Header and Text Color on Scroll ---
+
+
+    // Smooth scrolling for navigation links and other internal anchors
+    document.querySelectorAll('nav a[href^="#"], .btn[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Adjust scroll position to account for sticky header
+                const headerOffset = headerElement.offsetHeight;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                // Add some padding to ensure section title is not hidden under sticky header
+                const offsetPosition = elementPosition - headerOffset - 20; 
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
                 });
+                // After scrolling, if it's a dropdown link, remove the banner after a short delay
+                if (this.closest('.dropdown-content')) {
+                    setTimeout(() => {
+                        banner.classList.remove('visible');
+                    }, 1000); // Hide banner after 1 second
+                }
             }
-            if (schoolLinks.tech) {
-                schoolLinks.tech.addEventListener('click', (e) => {
-                    banner.textContent = 'School of Technology';
-                    banner.classList.add('visible');
-                });
-            }
-            if (schoolLinks.finance) {
-                schoolLinks.finance.addEventListener('click', (e) => {
-                    banner.textContent = 'School of Finance';
-                    banner.classList.add('visible');
-                });
-            }
+        });
+    });
 
-            // Header is set to 'scrolled' state immediately for this sub-page for consistent appearance.
-            const headerElement = document.getElementById('main-header');
-            headerElement.classList.add('hero'); 
-            headerElement.querySelector('.logo img').style.filter = 'invert(100%)'; 
+    // JavaScript for "Learn More" buttons to expand/collapse course details
+    document.querySelectorAll('.learn-more-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const courseId = this.dataset.courseId;
+            const detailsElement = document.getElementById(courseId + '-details');
 
-            // Smooth scrolling for navigation links and other internal anchors
-            document.querySelectorAll('nav a[href^="#"], .btn[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        // Adjust scroll position to account for sticky header
+            if (detailsElement) {
+                // Toggle 'show' class
+                detailsElement.classList.toggle('show');
+                
+                if (detailsElement.classList.contains('show')) {
+                    this.textContent = 'Show Less';
+                    // Scroll to the expanded section after a slight delay for animation
+                    setTimeout(() => {
                         const headerOffset = headerElement.offsetHeight;
-                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                        // Add some padding to ensure section title is not hidden under sticky header
-                        const offsetPosition = elementPosition - headerOffset - 20; 
+                        const elementPosition = detailsElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20;
 
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: "smooth"
                         });
-                        // After scrolling, if it's a dropdown link, remove the banner after a short delay
-                        if (this.closest('.dropdown-content')) {
-                            setTimeout(() => {
-                                banner.classList.remove('visible');
-                            }, 1000); // Hide banner after 1 second
-                        }
-                    }
-                });
-            });
-
-            // JavaScript for "Learn More" buttons to expand/collapse course details
-            document.querySelectorAll('.learn-more-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const courseId = this.dataset.courseId;
-                    const detailsElement = document.getElementById(courseId + '-details');
-
-                    if (detailsElement) {
-                        // Toggle 'show' class
-                        detailsElement.classList.toggle('show');
-                        
-                        if (detailsElement.classList.contains('show')) {
-                            this.textContent = 'Show Less';
-                            // Scroll to the expanded section after a slight delay for animation
-                            setTimeout(() => {
-                                const headerOffset = headerElement.offsetHeight;
-                                const elementPosition = detailsElement.getBoundingClientRect().top + window.pageYOffset;
-                                const offsetPosition = elementPosition - headerOffset - 20;
-
-                                window.scrollTo({
-                                    top: offsetPosition,
-                                    behavior: "smooth"
-                                });
-                            }, 300); // Adjust delay as needed
-                        } else {
-                            this.textContent = 'Learn More';
-                        }
-                    }
-                });
-            });
-
-            // Added for the original homepage hero background animation visibility
-            // This is applied only if the hero section has the hero-background element
-            const mainHeroBackground = document.querySelector('#hero .hero-background');
-            if (mainHeroBackground) {
-                mainHeroBackground.style.backgroundImage = 'url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg)';
+                    }, 300); // Adjust delay as needed
+                } else {
+                    this.textContent = 'Learn More';
+                }
             }
         });
+    });
+
+    // Added for the original homepage hero background animation visibility
+    // This is applied only if the hero section has the hero-background element
+    const mainHeroBackground = document.querySelector('#hero .hero-background');
+    if (mainHeroBackground) {
+        mainHeroBackground.style.backgroundImage = 'url(https://static.wixstatic.com/media/ac771e_f54ecf0b4fd0420e906ee6161518872b~mv2.jpg)';
+    }
+});
     </script>
 
 </body>
