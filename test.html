@@ -182,11 +182,10 @@
         .logo img {
             height: 85px; 
             transition: filter 0.4s ease;
-            filter: invert(100%):  /* Logo dark on inner pages*/
-            
+            filter: invert(100%); /* Make logo light for the dark hero background */
         }
         .main-header.scrolled .logo img {
-            filter: invert(100%);
+            filter: invert(0%); /* Make logo dark (its original color) for the light scrolled background */
         }
         .main-nav ul {
             display: flex;
@@ -822,14 +821,13 @@
                     <ul>
                         <li><a href="#schools-overview">Home</a></li>
                         <li><a href="#mission">Our Mission</a></li>
-                        <li><a href="#assessment-form">Assessment</a></li>
                         <li><a href="#popular-courses">Popular Courses</a></li>
                         <li><a href="#events-list">Events</a></li>
                         <li><a href="#contact-form">Contact Us</a></li>
                         
                     </ul>
                 </nav>
-                <a href="#registration-form" class="btn btn-primary">Register</a> </div>
+                <a href="#registrationForm" class="btn btn-primary">Register</a> </div>
         </header>
     </div>
 
@@ -1295,55 +1293,55 @@
                                 <h4>Course: Startup Fundamentals</h4>
                                 <h5>What you'll learn:</h5>
                                 <ul>
-                                    <li>Ideation and problem-solving techniques.</li>
+                                    <li>Ideation & Business Model Canvas.</li>
                                     <li>Market research and competitive analysis.</li>
-                                    <li>Business model canvas and value proposition design.</li>
-                                    <li>MVP development and initial user testing.</li>
+                                    <li>Developing a Minimum Viable Product (MVP).</li>
+                                    <li>Legal considerations for new businesses.</li>
                                 </ul>
                                 <h5>Course Structure:</h5>
-                                <p>5 weeks, weekly workshops, mentor sessions, pitch practice.</p>
+                                <p>5 weeks, 2 live sessions per week, practical assignments, peer feedback sessions.</p>
                                 <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
                             </div>
                         </div>
                     </div>
                     <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Funding Strategies">
+                        <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Growth Hacking">
                         <div class="course-item-content">
-                            <h3>Funding & Investment Strategies</h3>
-                            <p>Navigate the world of venture capital, angel investors, and crowdfunding to secure your startup's future.</p>
-                            <a href="#" class="btn btn-primary course-detail-btn" data-course-id="entrepreneur-funding">Course Details</a>
-                            <div id="entrepreneur-funding-details" class="course-detail-expanded">
-                                <h4>Course: Funding & Investment Strategies</h4>
-                                <h5>What you'll learn:</h5>
-                                <ul>
-                                    <li>Understanding different funding rounds (Seed, Series A, etc.).</li>
-                                    <li>Crafting compelling pitch decks and investor presentations.</li>
-                                    <li>Negotiating term sheets and equity allocation.</li>
-                                    <li>Legal aspects of startup funding.</li>
-                                </ul>
-                                <h5>Course Structure:</h5>
-                                <p>4 weeks, expert guest speakers, mock investor pitches, legal template access.</p>
-                                <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/3184434/pexels-photo-3184434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Growth Hacking">
-                        <div class="course-item-content">
-                            <h3>Growth Hacking & Scaling</h3>
-                            <p>Unlock rapid growth for your business with data-driven marketing and operational scaling techniques.</p>
+                            <h3>Growth Hacking Strategies</h3>
+                            <p>Learn innovative techniques for rapid user acquisition and business growth with limited resources.</p>
                             <a href="#" class="btn btn-primary course-detail-btn" data-course-id="entrepreneur-growth">Course Details</a>
                             <div id="entrepreneur-growth-details" class="course-detail-expanded">
-                                <h4>Course: Growth Hacking & Scaling</h4>
+                                <h4>Course: Growth Hacking Strategies</h4>
                                 <h5>What you'll learn:</h5>
                                 <ul>
-                                    <li>Customer acquisition strategies (SEO, SEM, Social Media).</li>
-                                    <li>Conversion rate optimization (CRO) and A/B testing.</li>
-                                    <li>Building scalable operations and team management.</li>
-                                    <li>Leveraging analytics for informed growth decisions.</li>
+                                    <li>Understanding the AARRR funnel.</li>
+                                    <li>Lean marketing and experimentation.</li>
+                                    <li>SEO, content marketing, and social media for startups.</li>
+                                    <li>Leveraging data for informed growth decisions.</li>
                                 </ul>
                                 <h5>Course Structure:</h5>
-                                <p>5 weeks, case studies, hands-on growth experiments, industry tools tutorial.</p>
+                                <p>4 weeks, 1 live session per week, real-world case studies, mini-project.</p>
+                                <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-item-card">
+                        <img src="https://images.pexels.com/photos/5905445/pexels-photo-5905445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Fundraising & Pitching">
+                        <div class="course-item-content">
+                            <h3>Fundraising & Pitching</h3>
+                            <p>Master the art of crafting compelling pitches and securing funding from investors.</p>
+                            <a href="#" class="btn btn-primary course-detail-btn" data-course-id="entrepreneur-fundraising">Course Details</a>
+                            <div id="entrepreneur-fundraising-details" class="course-detail-expanded">
+                                <h4>Course: Fundraising & Pitching</h4>
+                                <h5>What you'll learn:</h5>
+                                <ul>
+                                    <li>Types of startup funding (bootstrapping, angel, VC, crowdfunding).</li>
+                                    <li>Developing a compelling pitch deck and executive summary.</li>
+                                    <li>Negotiating term sheets and valuation.</li>
+                                    <li>Effective presentation skills and Q&A handling.</li>
+                                </ul>
+                                <h5>Course Structure:</h5>
+                                <p>3 weeks, intensive workshops, mock pitch sessions with investor feedback.</p>
                                 <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
                             </div>
                         </div>
@@ -1356,20 +1354,20 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Why Choose the School of Entrepreneurship?</h2>
-                    <p>Your launchpad for groundbreaking business success.</p>
+                    <p>Your venture, our expertise.</p>
                 </div>
                 <div class="why-choose-us-grid">
                     <div class="why-item">
-                        <h4>Build Your Venture</h4>
-                        <p>Turn your innovative ideas into real-world, fundable businesses.</p>
+                        <h4>Expert Mentorship</h4>
+                        <p>Learn directly from successful entrepreneurs and industry leaders.</p>
                     </div>
                     <div class="why-item">
-                        <h4>Network & Mentorship</h4>
-                        <p>Gain access to a powerful ecosystem of investors, mentors, and peers.</p>
+                        <h4>Venture Building</h4>
+                        <p>Receive hands-on guidance to build and validate your own business idea.</p>
                     </div>
                     <div class="why-item">
-                        <h4>Proven Strategies</h4>
-                        <p>Learn actionable strategies for business development, funding, and growth.</p>
+                        <h4>Network Access</h4>
+                        <p>Connect with a powerful ecosystem of investors, partners, and co-founders.</p>
                     </div>
                 </div>
             </div>
@@ -1379,7 +1377,7 @@
         <section id="tech-school" class="school-hero-section tech" style="display: none;">
             <div class="container">
                 <h1>School of Technology</h1>
-                <p class="school-tagline">Shaping the future with cutting-edge technology and innovation.</p>
+                <p class="school-tagline">Shaping the future through cutting-edge technological education.</p>
             </div>
         </section>
 
@@ -1387,25 +1385,25 @@
             <div class="container">
                 <div class="section-header">
                     <h2>About the School of Technology</h2>
-                    <p>Innovate, create, and lead in the digital era.</p>
+                    <p>Innovate, build, and lead in the digital age.</p>
                 </div>
                 <div class="school-about-grid">
                     <div class="school-about-text">
                         <div class="about-philosophy">
                             <h3>Our Philosophy</h3>
-                            <p>The School of Technology is dedicated to nurturing the next generation of tech leaders and innovators. We believe in a hands-on, project-based approach to learning, ensuring that our students not only understand theoretical concepts but can also apply them to solve real-world technological challenges.</p>
+                            <p>The School of Technology is driven by the belief that technology should be a tool for empowerment and progress. We are committed to equipping our students with not just coding skills, but also the critical thinking and problem-solving abilities needed to innovate and lead in a rapidly evolving tech landscape.</p>
                         </div>
                         <div class="about-differentiators">
                             <h3>What Sets Us Apart</h3>
                             <ul>
-                                <li><strong>Immersive Coding Bootcamps:</strong> Intensive programs designed for rapid skill acquisition and portfolio building.</li>
-                                <li><strong>Industry Partnerships:</strong> Collaborate on projects with leading tech companies, gaining invaluable experience.</li>
-                                <li><strong>Future-Proof Curriculum:</strong> Stay ahead with courses constantly updated to reflect the latest advancements in AI, data science, cybersecurity, and more.</li>
+                                <li><strong>Project-Based Learning:</strong> Build a portfolio of real-world projects that showcase your skills to potential employers.</li>
+                                <li><strong>Industry-Aligned Curriculum:</strong> Our courses are continuously updated to reflect the latest technologies and industry demands.</li>
+                                <li><strong>Dedicated Career Support:</strong> Receive resume reviews, interview prep, and job placement assistance from our career services team.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="school-about-image">
-                        <img src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Technology Education">
+                        <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Technology Education">
                     </div>
                 </div>
             </div>
@@ -1415,68 +1413,68 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Technology Course Offerings</h2>
-                    <p>Master the skills demanded by today's rapidly evolving tech industry.</p>
+                    <p>Dive deep into the most in-demand tech skills.</p>
                 </div>
                 <div class="course-list-grid">
                     <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="AI & Machine Learning">
+                        <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Full-Stack Web Development">
                         <div class="course-item-content">
-                            <h3>AI & Machine Learning Masterclass</h3>
-                            <p>Dive deep into artificial intelligence, neural networks, and machine learning algorithms.</p>
-                            <a href="#" class="btn btn-primary course-detail-btn" data-course-id="tech-ai">Course Details</a>
-                            <div id="tech-ai-details" class="course-detail-expanded">
-                                <h4>Course: AI & Machine Learning Masterclass</h4>
+                            <h3>Full-Stack Web Development</h3>
+                            <p>Become proficient in both front-end and back-end web technologies.</p>
+                            <a href="#" class="btn btn-primary course-detail-btn" data-course-id="tech-webdev">Course Details</a>
+                            <div id="tech-webdev-details" class="course-detail-expanded">
+                                <h4>Course: Full-Stack Web Development</h4>
                                 <h5>What you'll learn:</h5>
                                 <ul>
-                                    <li>Fundamentals of AI and ML concepts.</li>
-                                    <li>Building and training neural networks using TensorFlow/PyTorch.</li>
-                                    <li>Natural Language Processing (NLP) and Computer Vision.</li>
-                                    <li>Deploying ML models in real-world applications.</li>
+                                    <li>HTML5, CSS3, JavaScript (React, Vue.js).</li>
+                                    <li>Node.js, Express, Databases (MongoDB, PostgreSQL).</li>
+                                    <li>API development and integration.</li>
+                                    <li>Deployment and cloud platforms.</li>
                                 </ul>
                                 <h5>Course Structure:</h5>
-                                <p>8 weeks, project-based learning, access to GPU clusters, expert guest lectures.</p>
+                                <p>12 weeks, intensive bootcamp format, multiple projects, final capstone application.</p>
                                 <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
                             </div>
                         </div>
                     </div>
                     <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Full Stack Development">
+                        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data Science & Machine Learning">
                         <div class="course-item-content">
-                            <h3>Full Stack Web Development</h3>
-                            <p>Become proficient in both front-end and back-end web development with popular frameworks.</p>
-                            <a href="#" class="btn btn-primary course-detail-btn" data-course-id="tech-fullstack">Course Details</a>
-                            <div id="tech-fullstack-details" class="course-detail-expanded">
-                                <h4>Course: Full Stack Web Development</h4>
+                            <h3>Data Science & Machine Learning</h3>
+                            <p>Extract insights from data and build intelligent models for prediction and analysis.</p>
+                            <a href="#" class="btn btn-primary course-detail-btn" data-course-id="tech-datascience">Course Details</a>
+                            <div id="tech-datascience-details" class="course-detail-expanded">
+                                <h4>Course: Data Science & Machine Learning</h4>
                                 <h5>What you'll learn:</h5>
                                 <ul>
-                                    <li>Front-end development with React/Vue.js and modern CSS.</li>
-                                    <li>Back-end development with Node.js/Python and RESTful APIs.</li>
-                                    <li>Database management (SQL/NoSQL) and server deployment.</li>
-                                    <li>Version control with Git and collaborative development workflows.</li>
+                                    <li>Python for Data Science (Pandas, NumPy).</li>
+                                    <li>Statistical modeling and hypothesis testing.</li>
+                                    <li>Machine learning algorithms (regression, classification, clustering).</li>
+                                    <li>Data visualization and storytelling.</li>
                                 </ul>
                                 <h5>Course Structure:</h5>
-                                <p>12 weeks, intensive coding bootcamp, multiple projects, career support.</p>
+                                <p>8 weeks, project-driven, weekly labs, final data science challenge.</p>
                                 <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
                             </div>
                         </div>
                     </div>
                     <div class="course-item-card">
-                        <img src="https://images.pexels.com/photos/1181345/pexels-photo-1181345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cybersecurity">
+                        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cybersecurity Fundamentals">
                         <div class="course-item-content">
                             <h3>Cybersecurity Fundamentals</h3>
-                            <p>Understand the principles of cybersecurity, network defense, and ethical hacking.</p>
+                            <p>Protect systems and data from cyber threats with essential security practices.</p>
                             <a href="#" class="btn btn-primary course-detail-btn" data-course-id="tech-cybersecurity">Course Details</a>
                             <div id="tech-cybersecurity-details" class="course-detail-expanded">
                                 <h4>Course: Cybersecurity Fundamentals</h4>
                                 <h5>What you'll learn:</h5>
                                 <ul>
-                                    <li>Network security concepts and protocols.</li>
-                                    <li>Threat detection, vulnerability assessment, and risk management.</li>
-                                    <li>Ethical hacking techniques and penetration testing basics.</li>
-                                    <li>Data privacy regulations and compliance.</li>
+                                    <li>Network security and protocols.</li>
+                                    <li>Threat detection and incident response.</li>
+                                    <li>Cryptography basics and secure coding practices.</li>
+                                    <li>Compliance and legal aspects of cybersecurity.</li>
                                 </ul>
                                 <h5>Course Structure:</h5>
-                                <p>6 weeks, hands-on labs, real-world cyberattack simulations, industry certification prep.</p>
+                                <p>6 weeks, theoretical and practical labs, penetration testing simulations.</p>
                                 <a href="#register-form" class="btn btn-primary enroll-button">Enroll Now</a>
                             </div>
                         </div>
@@ -1489,20 +1487,20 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Why Choose the School of Technology?</h2>
-                    <p>Your gateway to a high-demand tech career.</p>
+                    <p>Your launchpad into a high-demand tech career.</p>
                 </div>
                 <div class="why-choose-us-grid">
                     <div class="why-item">
-                        <h4>Hands-on Learning</h4>
-                        <p>Build real projects and gain practical skills in demand by tech companies.</p>
-                    </div>
-                    <div class="why-item">
                         <h4>Expert Instructors</h4>
-                        <p>Learn from experienced software engineers and industry leaders.</p>
+                        <p>Learn from leading professionals and researchers in various tech fields.</p>
                     </div>
                     <div class="why-item">
-                        <h4>Career Ready</h4>
-                        <p>Our programs are designed to get you job-ready with a strong portfolio.</p>
+                        <h4>Hands-on Projects</h4>
+                        <p>Build a strong portfolio with practical, real-world development projects.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Career Support</h4>
+                        <p>Benefit from our extensive network and dedicated job placement assistance.</p>
                     </div>
                 </div>
             </div>
@@ -1512,7 +1510,7 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2023 Your Institute. All rights reserved.</p>
+            <p>&copy; 2025 Your Institute. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1523,179 +1521,203 @@
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
 
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Special handling for main-header to adjust scroll position
+                        const headerOffset = document.getElementById('main-header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20; // Added 20px extra padding
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
                 });
             });
 
-            // Sticky Header Logic
-            const mainHeader = document.getElementById('main-header');
-            const specializationBanner = document.getElementById('entrepreneur-banner'); // Assuming one banner
-            const heroSection = document.getElementById('hero'); // Get the hero section
+            // Header Scroll Logic
+            const header = document.getElementById('main-header');
+            const heroSection = document.getElementById('hero');
+            const specializationBanner = document.getElementById('entrepreneur-banner');
 
-            function toggleHeaderSticky() {
-                // If there's a hero section, make header sticky after scrolling past it
-                if (heroSection) {
-                    if (window.scrollY > heroSection.offsetHeight - mainHeader.offsetHeight) {
-                        mainHeader.classList.add('scrolled');
+            const toggleHeaderClasses = () => {
+                if (heroSection) { // Check if heroSection exists before proceeding
+                    const heroBottom = heroSection.getBoundingClientRect().bottom;
+                    if (window.scrollY > heroBottom - header.offsetHeight) {
+                        header.classList.add('scrolled');
                     } else {
-                        mainHeader.classList.remove('scrolled');
+                        header.classList.remove('scrolled');
                     }
                 } else {
-                    // Fallback: make header sticky after scrolling 100px if no hero
-                    if (window.scrollY > 100) { 
-                        mainHeader.classList.add('scrolled');
+                    // If no hero section, always keep header "scrolled" for consistency
+                    header.classList.add('scrolled');
+                }
+                
+                // Toggle specialization banner visibility
+                if (specializationBanner) {
+                    if (window.scrollY > 50) { // Show after scrolling 50px
+                        specializationBanner.classList.add('visible');
                     } else {
-                        mainHeader.classList.remove('scrolled');
+                        specializationBanner.classList.remove('visible');
                     }
                 }
-            }
-
-            window.addEventListener('scroll', toggleHeaderSticky);
-            // Call once on load to set initial state
-            toggleHeaderSticky(); 
-
-            // School-specific page display logic (PRD 4.2)
-            const schoolLinks = document.querySelectorAll('.school-overview-card .btn');
-            const schoolSections = {
-                'finance-school': document.getElementById('finance-school'),
-                'finance-about': document.getElementById('finance-about'),
-                'finance-offerings': document.getElementById('finance-offerings'),
-                'finance-why-us': document.getElementById('finance-why-us'),
-                'entrepreneurship-school': document.getElementById('entrepreneurship-school'),
-                'entrepreneurship-about': document.getElementById('entrepreneurship-about'),
-                'entrepreneurship-offerings': document.getElementById('entrepreneurship-offerings'),
-                'entrepreneurship-why-us': document.getElementById('entrepreneurship-why-us'),
-                'tech-school': document.getElementById('tech-school'),
-                'tech-about': document.getElementById('tech-about'),
-                'tech-offerings': document.getElementById('tech-offerings'),
-                'tech-why-us': document.getElementById('tech-why-us')
             };
 
-            // Helper function to hide all school-specific sections
-            function hideAllSchoolPages() {
-                for (const key in schoolSections) {
-                    if (schoolSections[key]) {
-                        schoolSections[key].style.display = 'none';
-                    }
-                }
-                // Also hide the specialization banner if it's visible
-                if (specializationBanner) {
-                    specializationBanner.classList.remove('visible');
-                }
-                document.getElementById('schools-overview').style.display = 'block'; // Show general overview
-                document.getElementById('hero').style.display = 'block'; // Show hero
-                document.getElementById('mission').style.display = 'block'; // Show mission
-                document.getElementById('register-form').style.display = 'block'; // Show registration form
-                document.getElementById('popular-courses').style.display = 'block'; // Show popular courses
-                document.getElementById('events-list').style.display = 'block'; // Show events
-                document.getElementById('contact-form').style.display = 'block'; // Show contact form
+            window.addEventListener('scroll', toggleHeaderClasses);
+            toggleHeaderClasses(); // Initial check on load
+
+
+            // School Page Navigation Logic
+            const schoolLinks = document.querySelectorAll('.school-overview-card .btn-primary');
+            const mainContentSections = document.querySelectorAll('main > section:not(#hero)'); // All sections except hero
+            const schoolSpecificSections = document.querySelectorAll(
+                '#finance-school, #finance-about, #finance-offerings, #finance-why-us, ' +
+                '#entrepreneurship-school, #entrepreneurship-about, #entrepreneurship-offerings, #entrepreneurship-why-us, ' +
+                '#tech-school, #tech-about, #tech-offerings, #tech-why-us'
+            );
+
+            // Function to hide all school-specific sections
+            function hideAllSchoolSections() {
+                schoolSpecificSections.forEach(section => {
+                    section.style.display = 'none';
+                });
             }
 
-            // Helper function to show specific school sections and hide others
-            function showSchoolPage(schoolPrefix) {
-                hideAllSchoolPages(); // Start by hiding everything
-
-                // Then show only the relevant school sections
-                if (schoolSections[schoolPrefix + '-school']) schoolSections[schoolPrefix + '-school'].style.display = 'block';
-                if (schoolSections[schoolPrefix + '-about']) schoolSections[schoolPrefix + '-about'].style.display = 'block';
-                if (schoolSections[schoolPrefix + '-offerings']) schoolSections[schoolPrefix + '-offerings'].style.display = 'block';
-                if (schoolSections[schoolPrefix + '-why-us']) schoolSections[schoolPrefix + '-why-us'].style.display = 'block';
-                
-                // Hide general sections when a specific school page is active
-                document.getElementById('schools-overview').style.display = 'none';
-                document.getElementById('hero').style.display = 'none';
-                document.getElementById('mission').style.display = 'none';
-                document.getElementById('register-form').style.display = 'none';
-                document.getElementById('popular-courses').style.display = 'none';
-                document.getElementById('events-list').style.display = 'none';
-                document.getElementById('contact-form').style.display = 'none';
-
-                // Update the specialization banner
-                if (specializationBanner) {
-                    specializationBanner.textContent = `School of ${schoolPrefix.charAt(0).toUpperCase() + schoolPrefix.slice(1)}`;
-                    specializationBanner.classList.add('visible');
-                }
+            // Function to show all main content sections (for homepage view)
+            function showMainContentSections() {
+                mainContentSections.forEach(section => {
+                    section.style.display = 'block'; // Show general sections
+                });
             }
 
-            // Event listeners for "Read More" buttons on school overview cards
+            // Event listener for school "Read More" buttons
             schoolLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1); // e.g., "finance-school"
-                    const schoolPrefix = targetId.split('-')[0]; // e.g., "finance"
-                    showSchoolPage(schoolPrefix);
-                    // Scroll to the top of the newly displayed school hero section
-                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                    const targetSchoolId = this.getAttribute('href'); // e.g., #finance-school
+
+                    hideAllSchoolSections(); // Hide all school specific sections
+                    showMainContentSections(); // Make sure other main sections are visible
+
+                    // Hide main content sections (except hero) when a school page is activated
+                    mainContentSections.forEach(section => {
+                        if (!['schools-overview', 'mission', 'register-form', 'popular-courses', 'events-list', 'contact-form'].includes(section.id)) {
+                             section.style.display = 'none';
+                        }
+                    });
+
+                    // Show sections for the selected school
+                    const sectionsToShow = document.querySelectorAll(
+                        `${targetSchoolId}, ${targetSchoolId.replace('-school', '-about')}, ` +
+                        `${targetSchoolId.replace('-school', '-offerings')}, ${targetSchoolId.replace('-school', '-why-us')}`
+                    );
+                    sectionsToShow.forEach(section => {
+                        section.style.display = 'block';
+                    });
+
+                    // Scroll to the top of the specific school's hero section
+                    const schoolHero = document.querySelector(targetSchoolId);
+                    if (schoolHero) {
+                        const headerOffset = document.getElementById('main-header').offsetHeight;
+                        const elementPosition = schoolHero.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset; // Adjusted for sticky header
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
                 });
             });
 
-            // Back to Home functionality (e.g., if logo clicked, or new "Back" button)
-            const homeLink = document.querySelector('.logo'); // Assuming logo links to home
-            if (homeLink) {
-                homeLink.addEventListener('click', function(e) {
-                    // No preventDefault here if it's truly an anchor to #hero,
-                    // but if it's meant to reset the view, then prevent and reset
-                    if (window.location.hash === '#hero' || window.location.hash === '') {
-                         // If already at home or no hash, allow default scroll to top
-                         hideAllSchoolPages(); // Ensure general view is active
-                    } else {
-                        e.preventDefault();
-                        hideAllSchoolPages(); // Reset to show all general sections
-                        window.location.hash = ''; // Clear hash
-                        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
-                    }
-                });
+            // Back button functionality (or similar navigation) - If the user navigates back to #schools-overview
+            // This is a simple example. For complex SPAs, a routing library would be better.
+            window.addEventListener('hashchange', function() {
+                if (window.location.hash === '#schools-overview' || window.location.hash === '#hero' || window.location.hash === '') {
+                    hideAllSchoolSections();
+                    showMainContentSections(); // Show main sections again
+                    // Ensure header is correctly styled for homepage
+                    toggleHeaderClasses(); 
+                }
+            });
+
+            // Initialize: Hide school-specific sections and show main content sections on first load
+            hideAllSchoolSections();
+            showMainContentSections();
+            // Scroll to top or specific section on initial load if hash is present
+            if (window.location.hash) {
+                const initialTarget = document.querySelector(window.location.hash);
+                if (initialTarget) {
+                    const headerOffset = document.getElementById('main-header').offsetHeight;
+                    const elementPosition = initialTarget.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset - 20; // Added 20px extra padding
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top if no hash
             }
 
-            // Course Detail Toggle Logic (PRD 4.3)
-            const courseDetailButtons = document.querySelectorAll('.course-detail-btn');
 
-            courseDetailButtons.forEach(button => {
+            // Course Detail Toggle Logic
+            document.querySelectorAll('.course-detail-btn').forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const courseId = this.dataset.courseId; // Get the data-course-id
-                    const detailSection = document.getElementById(courseId + '-details');
+                    const courseId = this.dataset.courseId;
+                    const detailElement = document.getElementById(`${courseId}-details`);
 
-                    if (detailSection) {
-                        // Toggle the 'show' class
-                        detailSection.classList.toggle('show');
+                    // Close any other open course details within the same school offerings section
+                    const currentOfferingsSection = this.closest('.school-content-section');
+                    if (currentOfferingsSection) {
+                        currentOfferingsSection.querySelectorAll('.course-detail-expanded.show').forEach(openDetail => {
+                            if (openDetail !== detailElement) {
+                                openDetail.classList.remove('show');
+                            }
+                        });
+                    }
+                    
+                    detailElement.classList.toggle('show');
 
-                        // Optionally, scroll to the newly opened section
-                        if (detailSection.classList.contains('show')) {
-                            detailSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
+                    // Scroll to the opened detail view
+                    if (detailElement.classList.contains('show')) {
+                        const headerOffset = document.getElementById('main-header').offsetHeight;
+                        const elementPosition = detailElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 30; // Extra padding
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
                 });
             });
 
-             // START REGISTRATION FORM JAVASCRIPT
+
+            // START REGISTRATION FORM JAVASCRIPT
             const schoolSelect = document.getElementById('schoolSelect');
-            const entrepreneurshipFields = document.getElementById('entrepreneurshipFields');
-            const technologyFields = document.getElementById('technologyFields');
-            const financeFields = document.getElementById('financeFields');
+            const conditionalFields = document.getElementById('conditionalFields');
         
-            // Helper function to hide all school-specific fields and remove 'required'
             function hideAllSchoolFields() {
-                const allSchoolFieldContainers = document.querySelectorAll('.school-fields');
-                allSchoolFieldContainers.forEach(container => {
-                    container.style.display = 'none';
-                    // Remove 'required' attribute from all inputs in hidden sections
-                    const requiredInputs = container.querySelectorAll('input, select, textarea');
+                const fields = conditionalFields.querySelectorAll('.school-fields');
+                fields.forEach(field => {
+                    field.style.display = 'none';
+                    // Remove required attribute when fields are hidden
+                    const requiredInputs = field.querySelectorAll('input, select, textarea');
                     requiredInputs.forEach(input => {
                         input.removeAttribute('required');
                     });
                 });
             }
         
-            // Helper function to show specific school fields and add 'required'
             function showSchoolFields(schoolId) {
-                hideAllSchoolFields(); // Hide all first to ensure only one is shown
+                hideAllSchoolFields(); // Hide all first
                 const targetFields = document.getElementById(schoolId + 'Fields');
                 if (targetFields) {
                     targetFields.style.display = 'flex'; // Use 'flex' to maintain vertical layout
-        
+                    
                     const requiredInputs = targetFields.querySelectorAll('input, select, textarea');
                     requiredInputs.forEach(input => {
                         // IMPORTANT: Customize which fields are required for each school here.
