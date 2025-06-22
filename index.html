@@ -722,17 +722,26 @@
         
             .footer-content {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                gap: 30px;
+                flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+                justify-content: space-around; /* Distributes space around items */
+                gap: 30px; /* Space between columns */
                 margin-bottom: 40px;
             }
         
+            /* Styles for all footer sections (columns) */
             .footer-section {
-                flex: 1;
-                min-width: 250px;
-                max-width: 300px;
+                flex: 1 1 200px; /* Allows flexibility, with a base of 200px to encourage 4 columns */
+                max-width: 300px; /* Limits max width for larger screens */
                 text-align: left;
+            }
+        
+            /* Specific styles for the logo column */
+            .footer-section.logo-column {
+                flex: 0 0 100px; /* Fixed width for the logo column, prevents it from growing */
+                min-width: 100px; /* Ensures it's at least 100px wide */
+                display: flex;
+                align-items: center; /* Vertically centers the logo */
+                justify-content: center; /* Horizontally centers the logo */
             }
         
                 .footer-section h3 {
@@ -763,8 +772,10 @@
             /* Styles for the footer logo */
             .footer-logo {
                 height: 60px; /* Adjust the height as needed */
-                margin-bottom: 20px; /* Space between logo and text */
-                margin-left: 0; /* Ensures it aligns left within its section */
+                width: auto; /* Maintain aspect ratio */
+                filter: invert(100%); /* INVERTED COLOR HERE */
+                /* Margin handled by parent flex container or logo-column now */
+                margin: 0; 
             }
 
         /* --- Responsive --- */
@@ -1597,12 +1608,15 @@
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
-                    <div class="footer-section about">
+                    <div class="footer-section logo-column">
                         <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Your Institute Logo" class="footer-logo">
-        
+                    </div>
+                    
+                    <div class="footer-section about">
                         <h3>About Us</h3>
                         <p>Your Institute is dedicated to providing cutting-edge education in various fields, empowering students for future success.</p>
-                        </div>
+                    </div>
+        
                     <div class="footer-section links">
                         <h3>Quick Links</h3>
                         <ul>
@@ -1613,9 +1627,10 @@
                             <li><a href="#technology-school">School of Technology</a></li>
                         </ul>
                     </div>
+        
                     <div class="footer-section contact">
                         <h3>Contact Info</h3>
-                        <p>Email: info@bambooinstitute.com</p>
+                        <p>Email: info@yourinstitute.com</p>
                         <p>Phone: +123 456 7890</p>
                     </div>
                 </div>
