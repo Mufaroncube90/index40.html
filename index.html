@@ -723,15 +723,17 @@
             .footer-content {
                 display: flex;
                 flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
-                justify-content: space-around; /* Distributes space around items */
-                gap: 30px; /* Space between columns */
+                justify-content: space-around; /* Distributes space around items and handles overall balance */
+                gap: 30px; /* Consistent space between columns */
                 margin-bottom: 40px;
+                align-items: flex-start; /* Aligns content of each column to the top for a cleaner look */
             }
         
-            /* Styles for all footer sections (columns) */
+            /* Styles for content footer sections (About, Quick Links, Contact) */
             .footer-section {
-                flex: 1 1 200px; /* Allows flexibility, with a base of 200px to encourage 4 columns */
-                max-width: 300px; /* Limits max width for larger screens */
+                flex: 1; /* Allows these 3 columns to grow and shrink equally */
+                min-width: 200px; /* Ensures they don't get too small before wrapping */
+                max-width: 300px; /* Limits max width for larger screens to maintain balance */
                 text-align: left;
             }
         
@@ -771,11 +773,30 @@
         
             /* Styles for the footer logo */
             .footer-logo {
-                height: 60px; /* Adjust the height as needed */
+                height: 80px; /* Increased logo size */
                 width: auto; /* Maintain aspect ratio */
-                filter: invert(100%); /* INVERTED COLOR HERE */
-                /* Margin handled by parent flex container or logo-column now */
-                margin: 0; 
+                filter: invert(100%); /* Inverted color */
+                margin: 0; /* No external margins, container handles centering */
+            }
+        
+            /* --- Responsive Design for Footer Columns --- */
+            @media (max-width: 768px) {
+                .footer-content {
+                    flex-direction: column; /* Stack columns vertically */
+                    align-items: center; /* Center items when stacked */
+                }
+                .footer-section {
+                    max-width: 80%; /* Limit width when stacked */
+                    margin-bottom: 20px; /* Add space between stacked sections */
+                    text-align: center; /* Center text when stacked */
+                }
+                .footer-section.logo-column {
+                    flex: 0 0 auto; /* Allow logo column to size naturally when stacked */
+                    margin-bottom: 20px;
+                }
+                .footer-logo {
+                    height: 70px; /* Slightly smaller logo on mobile for better fit */
+                }
             }
 
         /* --- Responsive --- */
