@@ -415,6 +415,8 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            text-align: center; /* Center text within content */
         }
         .course-item-content h3 {
             margin-bottom: 10px;
@@ -428,7 +430,7 @@
         }
         /* Removed .course-meta style as per user request */
         .course-item-content .btn-primary {
-            align-self: flex-start;
+            align-self: center; /* Center button within flex column */
             padding: 10px 20px;
             font-size: 0.9rem;
             margin-top: 15px;
@@ -451,6 +453,7 @@
             color: var(--primary-color);
             margin-bottom: 15px;
             font-size: 1.5rem;
+            text-align: center; /* Center heading */
         }
         .course-detail-expanded h5 { /* For sub-headings within course details */
             font-size: 1.2rem;
@@ -471,9 +474,11 @@
         /* Removed instructor-detail-card style as per user request */
         .course-detail-expanded .enroll-button {
             margin-top: 20px;
-            width: 100%;
+            width: auto; /* Allow button to size to content */
+            margin: 20px auto 0; /* Center block element horizontally */
             padding: 12px 20px;
             font-size: 1rem;
+            display: block; /* Make it a block element to apply margin: auto */
         }
 
 
@@ -632,7 +637,10 @@
             height: 200px;
             object-fit: cover;
         }
-        .general-course-content { padding: 20px; }
+        .general-course-content { 
+            padding: 20px; 
+            text-align: center; /* Center content including button links */
+        }
         .course-category {
             display: inline-block;
             padding: 5px 10px;
@@ -730,7 +738,13 @@
 
             /* New sections responsive adjustments */
             .event-item-new { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .event-item-new .btn { margin-top: 10px; width: 100%; }
+            .event-item-new .btn { margin-top: 10px; width: 100%; } /* This makes it full width on mobile */
+            /* Added for consistent centering on mobile for expanded course details button */
+            .course-detail-expanded .enroll-button {
+                width: 100%; /* Go full width on mobile */
+                margin: 20px 0 0; /* Remove auto margins to allow full width */
+                display: block; /* Ensure it behaves as a block element */
+            }
         }
                     /* START REGISTRATION FORM STYLES */
             /* These styles define the visual appearance of the registration form. */
@@ -807,7 +821,7 @@
             }
             
             .registration-form .btn-primary {
-                align-self: flex-start; /* Align button to the left within the flex container */
+                align-self: center; /* Center button within the flex container */
                 margin-top: 20px;
                 padding: 15px 40px; /* Slightly larger button */
             }
