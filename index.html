@@ -162,20 +162,18 @@
             max-height: 50px;
             padding: 10px;
         }
-
         /* --- Dynamic Smart Header --- */
-      .main-header {
-    /* Change the background to a dark, semi-transparent color */
-    background: rgba(0, 0, 0, 0.7); /* Adjust opacity (0.7) as needed for desired darkness/transparency */
-    
-    /* Change the border to a dark, semi-transparent color */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
-    
-    /* Keep existing backdrop-filter and transition */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: background 0.4s ease, border-color 0.4s ease;
-}
+        .main-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+        .main-header.scrolled {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
         .main-header .container {
             display: flex;
             justify-content: space-between;
@@ -186,10 +184,9 @@
         .logo img {
             height: 85px; 
             transition: filter 0.4s ease;
-            filter: invert(100%); /* Logo will be dark on inner pages */
         }
         .main-header.scrolled .logo img {
-            /* No change needed if already inverted */
+            filter: invert(100%);
         }
         .main-nav ul {
             display: flex;
@@ -200,24 +197,27 @@
             margin: 0 15px;
         }
         .main-nav a {
-            color: var(--text-dark); /* Dark text on inner pages */
+            color: var(--text-light);
             font-weight: bold;
             transition: color 0.4s ease;
-            text-shadow: none;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         .main-header.scrolled .main-nav a {
             color: var(--text-dark);
+            text-shadow: none;
         }
         .main-nav a:hover {
             color: var(--primary-color);
         }
         .main-header .btn-primary {
+            background: rgba(212, 230, 67, 0.25);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .main-header.scrolled .btn-primary {
             background-color: var(--primary-color);
             color: var(--text-dark);
             border: none;
-        }
-        .main-header.scrolled .btn-primary {
-            /* No change */
         }
 
         .dropdown { position: relative; }
