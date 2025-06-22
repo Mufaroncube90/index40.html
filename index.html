@@ -568,6 +568,31 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.07);
         }
+    .form-container form {
+        display: flex;          /* This makes the form a flex container */
+        flex-direction: column; /* This stacks its direct children (like form-groups and the button) vertically */
+        gap: 20px;              /* This adds 20px of space between all direct children of the form */
+    }
+    .form-group {
+        /* REPLACE the existing 'margin-bottom: 20px;' line with this: */
+        margin-bottom: 0; /* Changed to 0 because 'gap' on the parent form now handles spacing */
+    }
+    .form-container form .btn-primary {
+        align-self: center; /* This centers the button horizontally within the flex column */
+        width: auto;        /* Allows the button to size to its content */
+        margin-top: 20px;
+
+    .form-group {
+        /* REPLACE the existing 'margin-bottom: 20px;' line with this: */
+        margin-bottom: 0; /* Changed to 0 because 'gap' on the parent form now handles spacing */
+    }
+
+    /* ADD this entire new rule to center your button */
+    .form-container form .btn-primary {
+        align-self: center; /* This centers the button horizontally within the flex column */
+        width: auto;        /* Allows the button to size to its content */
+        margin-top: 20px;   /* Adds some space above the button. Adjust if needed. */
+    }
         .form-group {
             margin-bottom: 20px;
         }
