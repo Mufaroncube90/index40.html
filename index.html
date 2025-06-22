@@ -164,17 +164,18 @@
         }
 
         /* --- Dynamic Smart Header --- */
-        .main-header {
-            background: rgba(225, 225, 225, 0.1); /* Opaque by default on inner pages */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(225, 225, 225, 0.2);
-            transition: background 0.4s ease, border-color 0.4s ease;
-        }
-        .main-header.scrolled { /* This state is used for the header on inner sections */
-            background: rgba(225, 225, 225, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
+      .main-header {
+    /* Change the background to a dark, semi-transparent color */
+    background: rgba(0, 0, 0, 0.7); /* Adjust opacity (0.7) as needed for desired darkness/transparency */
+    
+    /* Change the border to a dark, semi-transparent color */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+    
+    /* Keep existing backdrop-filter and transition */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
         .main-header .container {
             display: flex;
             justify-content: space-between;
