@@ -198,7 +198,7 @@
         .logo img {
             height: 85px; 
             transition: filter 0.4s ease;
-            filter: grayscale(200%);brightness(500%) /* Make logo light for the dark hero background */
+            filter: brightness(0) invert(100%) sepia(1) hue-rotate(67deg) saturate(700%); /* Make logo light for the dark hero background */
         }
         .main-header.scrolled .logo img {
             filter: invert(0%); /* Make logo dark (its original color) for the light scrolled background */
