@@ -568,8 +568,13 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.07);
         }
+        .form-container form { /* Added to make form a flex container */
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between form groups */
+        }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 0; /* Removed margin-bottom from here to use gap in parent flex */
         }
         .form-group label {
             display: block;
@@ -606,6 +611,13 @@
             margin-right: 8px;
             transform: scale(1.2); /* Make checkbox slightly larger */
         }
+        /* Style for the button in contact form to center it */
+        .form-container form .btn-primary {
+            align-self: center; /* This will center the button horizontally within the flex column */
+            width: auto; /* Allow button to size to content */
+            margin-top: 20px; /* Add some space above the button */
+        }
+
 
         /* --- NEW: Courses Section (General) --- */
         .general-courses-section {
@@ -928,7 +940,6 @@
                     </div>
                     <div class="mission-card">
                         <div class="mission-number">03</div>
-                        <h3>Global Impact</h3>
                         <p>Empowering our community to create meaningful change worldwide through ethical practices.</p>
                     </div>
                 </div>
