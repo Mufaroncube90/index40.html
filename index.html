@@ -1918,6 +1918,49 @@
             const animationDuration = totalContentWidth / 50; // Adjust '50' for desired pixels/second speed
             newsTickerWrapper.style.animationDuration = `${animationDuration}s`;
 
+            // --- NEW: Form Submission JavaScript Code  ---
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) { // Ensure the form element exists before adding listener
+                contactForm.addEventListener('submit', async function(event) {
+                    // 1. Prevent the default form submission (stops page reload/redirect)
+                    event.preventDefault(); 
+
+                    const formData = new FormData(this); // Collects all form data
+                    
+                    try {
+                        // 2. Send data to Formspree via AJAX (fetch API)
+                        const response = await fetch(this.action, {
+                            method: this.method,
+                            body: formData,
+                            headers: {
+                                // This tells Formspree to send a JSON response, not a redirect
+                                'Accept': 'application/json' 
+                            }
+                        });
+
+                        if (response.ok) {
+                            // 3. Form submitted successfully
+                            alert('Message sent successfully! We will get back to you soon.'); 
+                            this.reset(); // 4. Clear all form fields
+                        } else {
+                            // Handle errors from Formspree
+                            const data = await response.json();
+                            if (data.errors) {
+                                alert('Error: ' + data.errors.map(error => error.message).join(', '));
+                            } else {
+                                alert('Oops! There was a problem sending your message. Please try again later.');
+                            }
+                        }
+                    } catch (error) {
+                        // Handle network errors (e.g., no internet connection)
+                        console.error('Network error during form submission:', error);
+                        alert('An unexpected error occurred. Please check your internet connection and try again.');
+                    }
+                });
+            }
+            // --- END Form Submission JavaScript Code ---
+
         }); // This is the single closing brace for the main DOMContentLoaded listener.
            
 
