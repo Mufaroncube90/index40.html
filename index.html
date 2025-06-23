@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Institute | Multi-School Platform</title>
+    <title>Bamboo Institute</title>
 
     <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/ac771e_56910332c8534eef836250d27821687b~mv2.png/v1/fill/w_128,h_128,al_c,q_80,usm_0.66_1.00_0.01/ac771e_56910332c8534eef836250d27821687b~mv2.png">
     
@@ -472,8 +472,6 @@
         .course-detail-expanded ul li {
             margin-bottom: 5px;
         }
-        /* Removed .course-detail-meta-grid style as per user request */
-        /* Removed instructor-detail-card style as per user request */
         .course-detail-expanded .enroll-button {
             margin-top: 20px;
             width: auto; /* Allow button to size to content */
@@ -831,7 +829,7 @@
             .course-item-card img {
                 height: 220px;
             }
-
+            
             /* New sections responsive adjustments */
             .event-item-new { flex-direction: column; align-items: flex-start; gap: 15px; }
             .event-item-new .btn { margin-top: 10px; width: 100%; } /* This makes it full width on mobile */
@@ -931,10 +929,48 @@
                 animation: fadeIn-Up 0.5s ease-out forwards; /* Fades in when displayed */
             }
             /* END REGISTRATION FORM STYLES */
+
+        /* --- TOAST NOTIFICATION STYLES --- */
+        .toast-notification {
+            position: fixed; /* Stays in place even when scrolling */
+            top: 20px;       /* 20px from the top of the viewport */
+            left: 50%;       /* Start from the middle horizontally */
+            transform: translateX(-50%); /* Adjust to truly center it */
+            background-color: var(--dark-bg); /* Dark background */
+            color: var(--text-light); /* Light text */
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10000; /* Make sure it's on top of everything else */
+            opacity: 0;      /* Hidden by default */
+            visibility: hidden; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transitions */
+            min-width: 250px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .toast-notification.show {
+            opacity: 1;      /* Make it visible */
+            visibility: visible; /* Make it visible */
+            transform: translateX(-50%) translateY(0); /* Ensure it's centered and in place */
+        }
+        
+        /* Optional: Different colors for success/error */
+        .toast-notification.success {
+            background-color: var(--green-color); /* Use your green color for success */
+        }
+        
+        .toast-notification.error {
+            background-color: #e74c3c; /* A standard red for errors */
+        }
     </style>
 </head>
 <body>
-    
+     <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-notification" class="toast-notification">
+        <span id="toast-message"></span>
+    </div>
     <div class="sticky-top-container">
         <div id="news-ticker-banner" class="specialization-banner">
             <div class="marquee-wrapper">
@@ -1646,8 +1682,8 @@
 
                     <div class="footer-section contact">
                         <h3>Contact Info</h3>
-                        <p>Email: info@bambooinstitute.com</p>
-                        <p>Phone: +123 456 7890</p>
+                        <p>Email: info@bambooinstitute.co.za</p>
+                        <p>Phone: +27 81 88 221 81</p>
                     </div>
                     
                     <div class="footer-section about">
@@ -1920,43 +1956,63 @@
             newsTickerWrapper.style.animationDuration = `${animationDuration}s`;
 
             // --- NEW: Form Submission JavaScript Code  ---
+            // --- TOAST NOTIFICATION JS HELPERS (ADD THESE FUNCTIONS) ---
+            const toastNotification = document.getElementById('toast-notification');
+            const toastMessage = document.getElementById('toast-message');
+
+            function showToast(message, type = 'default') {
+                toastMessage.textContent = message;
+                toastNotification.className = 'toast-notification show'; // Reset classes, then add show
+                if (type === 'success') {
+                    toastNotification.classList.add('success');
+                } else if (type === 'error') {
+                    toastNotification.classList.add('error');
+                }
+
+                // Hide the toast after 4 seconds
+                setTimeout(() => {
+                    toastNotification.classList.remove('show', 'success', 'error');
+                }, 4000);
+            }
+            // --- END TOAST NOTIFICATION JS HELPERS ---
+
+
+            // --- Form Submission JavaScript Code (UPDATE THIS PART) ---
             const contactForm = document.getElementById('contactForm');
             
-            if (contactForm) { // Ensure the form element exists before adding listener
+            if (contactForm) { 
                 contactForm.addEventListener('submit', async function(event) {
-                    // 1. Prevent the default form submission (stops page reload/redirect)
                     event.preventDefault(); 
 
-                    const formData = new FormData(this); // Collects all form data
+                    const formData = new FormData(this);
                     
                     try {
-                        // 2. Send data to Formspree via AJAX (fetch API)
                         const response = await fetch(this.action, {
                             method: this.method,
                             body: formData,
                             headers: {
-                                // This tells Formspree to send a JSON response, not a redirect
                                 'Accept': 'application/json' 
                             }
                         });
 
                         if (response.ok) {
-                            // 3. Form submitted successfully
-                            alert('Message sent successfully! We will get back to you soon.'); 
-                            this.reset(); // 4. Clear all form fields
+                            // Use toast for success
+                            showToast('Message sent successfully! We will get back to you soon.', 'success'); 
+                            this.reset(); 
                         } else {
-                            // Handle errors from Formspree
                             const data = await response.json();
                             if (data.errors) {
-                                alert('Error: ' + data.errors.map(error => error.message).join(', '));
+                                // Use toast for errors
+                                showToast('Error: ' + data.errors.map(error => error.message).join(', '), 'error');
                             } else {
-                                alert('Oops! There was a problem sending your message. Please try again later.');
+                                // Use toast for general errors
+                                showToast('Oops! There was a problem sending your message. Please try again later.', 'error');
                             }
                         }
                     } catch (error) {
-                        // Handle network errors (e.g., no internet connection)
                         console.error('Network error during form submission:', error);
-                        alert('An unexpected error occurred. Please check your internet connection and try again.');
+                        // Use toast for network errors
+                        showToast('An unexpected error occurred. Please check your internet connection and try again.', 'error');
                     }
                 });
             }
