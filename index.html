@@ -146,33 +146,31 @@
             top: 0;
             z-index: 100;
         }
-        /* --- NEW: Pop-up Notification Styles (iOS-like) --- */
-        #announcement-popup {
+       #announcement-popup {
             position: fixed;
-            top: 20px; /* Slightly below the top */
+            top: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(-100px); /* Start above view, move down */
-            z-index: 10001; /* Higher than toast */
-            background-color: rgba(0, 0, 0, 0.85); /* Slightly transparent dark background */
+            z-index: 10001;
+            background-color: rgba(0, 0, 0, 0.85);
             color: var(--text-light);
             padding: 15px 25px;
-            border-radius: 12px; /* More rounded for iOS feel */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-            opacity: 0;
-            visibility: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0; /* MUST be 0 initially */
+            visibility: hidden; /* MUST be hidden initially */
             transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s;
-            max-width: 400px; /* Constrain width */
+            max-width: 400px;
             text-align: center;
             font-size: 1.1rem;
             font-weight: 500;
         }
         
         #announcement-popup.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0); /* Slide into view */
+            opacity: 1; /* MUST be 1 when 'show' class is added */
+            visibility: visible; /* MUST be visible when 'show' class is added */
+            transform: translateX(-50%) translateY(0); /* Slides into position */
         }
-        /* --- END NEW: Pop-up Notification Styles --- */
        
 
 
@@ -970,9 +968,10 @@
         <span id="toast-message"></span>
     </div>
    <!-- NEW: Pop-up Announcement Notification -->
-    <div id="announcement-popup">
-        <span id="announcement-message"></span>
-    </div>
+   <div id="announcement-popup">
+    <span id="announcement-message"></span>
+   </div>
+
         <header id="main-header" class="main-header scrolled">
             <div class="container">
                 <a href="#hero" class="logo"> <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
@@ -1929,29 +1928,42 @@
                 const popup = document.getElementById('announcement-popup');
                 const msgElement = document.getElementById('announcement-message');
             
+                // Check if both elements exist before trying to manipulate them
                 if (popup && msgElement) {
                     msgElement.textContent = message;
-                    popup.classList.add('show');
+                    // Ensure the popup starts hidden before showing to prevent flickering
+                    popup.style.opacity = '0';
+                    popup.style.visibility = 'hidden';
+                    popup.style.transform = 'translateX(-50%) translateY(-100px)';
             
+                    // Add the 'show' class to trigger the transition
+                    popup.classList.add('show');
+                    // Make visible immediately to allow transition
+                    popup.style.visibility = 'visible';
+                    
                     // Hide the popup after 'duration' milliseconds
                     setTimeout(() => {
                         popup.classList.remove('show');
-                        // Optional: Hide entirely after transition to prevent interaction
+                        // Allow time for the transition to complete before setting visibility to hidden
                         setTimeout(() => {
                             popup.style.visibility = 'hidden';
-                        }, 400); // Match CSS transition duration
+                        }, 400); // This duration should match the CSS transition duration for 'transform' and 'opacity'
                     }, duration);
+                } else {
+                    console.error("Error: Announcement popup or message element not found in the HTML.");
                 }
             }
             
             // Example usage: Call this function when you want an announcement to appear
-            // You can call this on DOMContentLoaded, after a user action, etc.
+            // This will make the popup appear 2 seconds after the page loads, and stay for 6 seconds.
             document.addEventListener('DOMContentLoaded', () => {
                 // Show a welcome announcement after a short delay
                 setTimeout(() => {
-                    showAnnouncementPopup("Welcome! Explore our new courses and events.", 6000); // Message, and duration in milliseconds
+                    // Placeholder announcement message
+                    showAnnouncementPopup("Important Announcement: Advanced Financial Modeling Workshop! 10 september", 6000); // Message, and duration in milliseconds
                 }, 2000); // Delay before the popup first appears
             });
+
 
             // --- NEW: Form Submission JavaScript Code  ---
             // --- TOAST NOTIFICATION JS HELPERS (ADD THESE FUNCTIONS) ---
