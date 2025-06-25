@@ -146,36 +146,34 @@
             top: 0;
             z-index: 100;
         }
-
-        /* --- Marquee Banner Styles --- */
-        .specialization-banner {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            font-weight: bold;
-            height: 40px; /* Fixed height for the banner */
-            line-height: 40px; /* Vertically align text */
-            overflow: hidden; /* Crucial for hiding content that's not in view */
-            position: relative; /* For absolute positioning of marquee content */
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Subtle inner shadow */
+        /* --- NEW: Pop-up Notification Styles (iOS-like) --- */
+        #announcement-popup {
+            position: fixed;
+            top: 20px; /* Slightly below the top */
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px); /* Start above view, move down */
+            z-index: 10001; /* Higher than toast */
+            background-color: rgba(0, 0, 0, 0.85); /* Slightly transparent dark background */
+            color: var(--text-light);
+            padding: 15px 25px;
+            border-radius: 12px; /* More rounded for iOS feel */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s;
+            max-width: 400px; /* Constrain width */
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
-
-        .marquee-wrapper {
-            display: inline-block; /* Allows content to flow horizontally */
-            white-space: nowrap; /* Ensures content stays on one line */
-            position: absolute; /* Position within the banner for animation */
-            animation: marquee 20s linear infinite; /* Adjust time as needed for speed */
-            min-width: 100%; /* Ensure it spans at least the full width */
+        
+        #announcement-popup.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0); /* Slide into view */
         }
-
-        .marquee-item {
-            display: inline-block; /* Each message is an inline block */
-            padding: 0 20px; /* Space between messages */
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0%); } /* Start at its initial position */
-            100% { transform: translateX(-100%); } /* Move fully to the left by its own content width */
-        }
+        /* --- END NEW: Pop-up Notification Styles --- */
+       
 
 
         /* --- Dynamic Smart Header --- */
@@ -971,11 +969,10 @@
     <div id="toast-notification" class="toast-notification">
         <span id="toast-message"></span>
     </div>
-    <div class="sticky-top-container">
-        <div id="news-ticker-banner" class="specialization-banner">
-            <div class="marquee-wrapper">
-                </div>
-        </div>
+   <!-- NEW: Pop-up Announcement Notification -->
+    <div id="announcement-popup">
+        <span id="announcement-message"></span>
+    </div>
         <header id="main-header" class="main-header scrolled">
             <div class="container">
                 <a href="#hero" class="logo"> <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
@@ -1740,7 +1737,6 @@
                 }
                 
                 // The news ticker is always visible now, no need for specific visibility toggle based on scroll.
-                // newsTickerBanner.classList.add('visible'); // This line is no longer needed
             };
 
             window.addEventListener('scroll', toggleHeaderClasses);
@@ -1928,31 +1924,34 @@
         
             // END REGISTRATION FORM JAVASCRIPT
 
-            // NEW: Marquee/News Ticker Logic
-            const newsTickerWrapper = document.querySelector('#news-ticker-banner .marquee-wrapper');
-            const newsMessages = [
-                "🎉 New Course Alert: Master the Fundamentals of AI for Business - Enroll Now!",
-                "🗓️ Upcoming Event: Startup Pitch Competition - July 20th! Register to attend.",
-                "⭐ Success Story: Our alumni, Alumni Top Achiever, just secured R5M in funding!",
-                "📚 New Articles on Financial Literacy in our Blog. Check them out!",
-                "✨ Limited Seats Available for Advanced Data Science Bootcamp - Don't miss out!"
-            ];
-
-            // Duplicate messages to create a seamless loop
-            const messagesToDisplay = [...newsMessages, ...newsMessages]; // Duplicate for a smoother loop
-
-            messagesToDisplay.forEach(message => {
-                const item = document.createElement('span');
-                item.classList.add('marquee-item');
-                item.textContent = message;
-                newsTickerWrapper.appendChild(item);
+            // Function to show the announcement pop-up
+            function showAnnouncementPopup(message, duration = 5000) {
+                const popup = document.getElementById('announcement-popup');
+                const msgElement = document.getElementById('announcement-message');
+            
+                if (popup && msgElement) {
+                    msgElement.textContent = message;
+                    popup.classList.add('show');
+            
+                    // Hide the popup after 'duration' milliseconds
+                    setTimeout(() => {
+                        popup.classList.remove('show');
+                        // Optional: Hide entirely after transition to prevent interaction
+                        setTimeout(() => {
+                            popup.style.visibility = 'hidden';
+                        }, 400); // Match CSS transition duration
+                    }, duration);
+                }
+            }
+            
+            // Example usage: Call this function when you want an announcement to appear
+            // You can call this on DOMContentLoaded, after a user action, etc.
+            document.addEventListener('DOMContentLoaded', () => {
+                // Show a welcome announcement after a short delay
+                setTimeout(() => {
+                    showAnnouncementPopup("Welcome! Explore our new courses and events.", 6000); // Message, and duration in milliseconds
+                }, 2000); // Delay before the popup first appears
             });
-
-            // Adjust animation duration based on content length for a consistent speed (optional, but good for varied content)
-            // This is a simple estimate. For pixel-perfect speed, you'd need to measure actual pixel width.
-            const totalContentWidth = newsTickerWrapper.scrollWidth;
-            const animationDuration = totalContentWidth / 50; // Adjust '50' for desired pixels/second speed
-            newsTickerWrapper.style.animationDuration = `${animationDuration}s`;
 
             // --- NEW: Form Submission JavaScript Code  ---
             // --- TOAST NOTIFICATION JS HELPERS (ADD THESE FUNCTIONS) ---
