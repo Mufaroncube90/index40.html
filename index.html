@@ -960,6 +960,116 @@
         .toast-notification.error {
             background-color: #e74c3c; /* A standard red for errors */
         }
+        root {
+            /* ... your existing variables like --primary-color, --green-color, etc. ... */
+            /* Add specific variables for notification borders if they differ from your general colors */
+            --notification-info-border: var(--primary-color); /* Uses your lime primary color */
+            --notification-success-border: var(--green-color); /* Uses your green color */
+            --notification-bg-color: #ffffff; /* White background for notifications */
+            --notification-title-color: var(--text-dark);
+            --notification-message-color: var(--text-secondary);
+            --notification-close-icon-color: #9CA3AF; /* A light grey for the close button */
+        }
+
+        /* --- NOTIFICATION AREA & CARD STYLES (ADD THESE) --- */
+        /* Notification Area Container (fixed position, stacks notifications) */
+        #notification-area {
+            position: fixed;
+            bottom: 1.5rem; /* Space from bottom of screen */
+            right: 1.5rem;  /* Space from right of screen */
+            z-index: 9999; /* Below your existing toast (10000) but above everything else */
+            display: flex;
+            flex-direction: column-reverse; /* Stacks new notifications on top (visually at bottom) */
+            gap: 0.75rem; /* Space between stacked notifications */
+            pointer-events: none; /* Allows clicks to pass through empty area, only cards clickable */
+        }
+
+        /* Individual Notification Card */
+        .notification-card {
+            background-color: var(--notification-bg-color);
+            border-radius: 0.75rem; /* Slightly more rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); /* Stronger, professional shadow */
+            padding: 1.25rem 1.5rem; /* Generous padding */
+            width: 100%;
+            max-width: 360px; /* Slightly wider for better readability */
+            border-left: 0.4rem solid; /* Prominent left border for type indication */
+            display: flex;
+            align-items: flex-start; /* Align content to the top */
+            gap: 1rem; /* More space between content and close button */
+            opacity: 0; /* Start hidden for animation */
+            transform: translateX(110%); /* Start further off-screen to the right */
+            /* Animation for slide-in, fade-in, and smooth collapse of space */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, margin-bottom 0.5s ease-out;
+            pointer-events: auto; /* Re-enable pointer events for the card itself */
+        }
+
+        /* Notification types based on your defined colors */
+        .notification-card.info {
+            border-color: var(--notification-info-border);
+        }
+        .notification-card.success {
+            border-color: var(--notification-success-border);
+        }
+        /* Add more types if you introduce them (e.g., .warning, .error) */
+
+        /* Animation for when notification is visible */
+        .notification-card.is-visible {
+            opacity: 1;
+            transform: translateX(0); /* Slide into view */
+        }
+
+        /* Animation for when notification is dismissing */
+        .notification-card.is-dismissing {
+            opacity: 0;
+            transform: translateX(110%); /* Slide out to the right */
+            margin-bottom: -1rem; /* Collapse space smoothly */
+        }
+
+        .notification-card-content {
+            flex-grow: 1;
+        }
+
+        .notification-card-title {
+            font-weight: 700;
+            color: var(--notification-title-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem; /* Slightly larger title */
+        }
+
+        .notification-card-message {
+            color: var(--notification-message-color);
+            font-size: 0.95rem; /* Slightly larger message text */
+            line-height: 1.5;
+        }
+
+        .notification-close-btn {
+            background: none;
+            border: none;
+            color: var(--notification-close-icon-color);
+            font-size: 1.1rem; /* Larger close icon */
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 0.3rem;
+            transition: color 0.2s ease-in-out;
+            margin-left: 0.5rem; /* Space from message */
+        }
+        .notification-close-btn:hover {
+            color: var(--text-dark); /* Darker on hover */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 640px) {
+            #notification-area {
+                left: 0.5rem;
+                right: 0.5rem;
+                width: calc(100% - 1rem); /* Full width minus margins */
+                align-items: center; /* Center notifications if they don't fill width */
+            }
+            .notification-card {
+                max-width: none; /* Allow full width on small screens */
+            }
+        }
+        /* --- END NOTIFICATION AREA & CARD STYLES --- */
     </style>
 </head>
 <body>
@@ -967,11 +1077,6 @@
     <div id="toast-notification" class="toast-notification">
         <span id="toast-message"></span>
     </div>
-   <!-- NEW: Pop-up Announcement Notification -->
-   <div id="announcement-popup">
-    <span id="announcement-message"></span>
-   </div>
-
         <header id="main-header" class="main-header scrolled">
             <div class="container">
                 <a href="#hero" class="logo"> <img src="https://static.wixstatic.com/media/ac771e_146c3b0f3269466592354fa53d75baec~mv2.png" alt="Logo">
@@ -1692,8 +1797,115 @@
                 </div>
             </div>
         </footer>
+        <!-- NOTIFICATION AREA CONTAINER (ADD THIS) -->
+        <div id="notification-area">
+            <!-- Notifications will be dynamically inserted here by JavaScript -->
+        </div>
+        <!-- END NOTIFICATION AREA CONTAINER -->
 
     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            // Your existing JavaScript code starts here
+
+            // ... (your existing JS code, including your current showToast function, goes here) ...
+
+            // --- POP-UP NOTIFICATION LOGIC (ADD THESE) ---
+            const notificationArea = document.getElementById('notification-area');
+            const showUpdateBtn = document.getElementById('show-update-btn'); // For testing
+            const showSuccessBtn = document.getElementById('show-success-btn'); // For testing
+
+            let notificationCounter = 0; // To give unique IDs to notifications
+
+            // Mock updates data (for testing buttons)
+            const mockUpdates = [
+                { title: 'System Update', message: 'Our platform has been updated for improved performance and security.', type: 'info' },
+                { title: 'New Feature Alert!', message: 'You can now download quarterly financial reports directly from your dashboard.', type: 'info' },
+                { title: 'Partnership Milestone!', message: 'We\'ve onboarded 500 new professionals this month. Thank you!', type: 'success' },
+                { title: 'Important Notice', message: 'Scheduled maintenance this Sunday from 2 AM - 4 AM SAST. Services may be temporarily interrupted.', type: 'info' },
+                { title: 'Admin Streamlined', message: 'Our new administrative tools simplify your back-office tasks even further.', type: 'info' },
+            ];
+
+            /**
+             * Displays a new pop-up notification.
+             * @param {string} title - The title of the notification.
+             * @param {string} message - The main message of the notification.
+             * @param {string} [type='info'] - The type of notification ('info', 'success').
+             */
+            function showPopUpNotification(title, message, type = 'info') {
+                const notificationCard = document.createElement('div');
+                notificationCard.id = `pop-up-notification-${notificationCounter++}`;
+                notificationCard.className = `notification-card ${type}`;
+
+                notificationCard.innerHTML = `
+                    <div class="notification-card-content">
+                        <div class="notification-card-title">${title}</div>
+                        <div class="notification-card-message">${message}</div>
+                    </div>
+                    <button class="notification-close-btn" aria-label="Close notification">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+
+                // Append the card to the notification area
+                notificationArea.appendChild(notificationCard);
+
+                // Force reflow to ensure animation triggers
+                void notificationCard.offsetWidth;
+
+                // Add is-visible class to trigger slide-in animation
+                notificationCard.classList.add('is-visible');
+
+                // Add event listener for the close button
+                notificationCard.querySelector('.notification-close-btn').addEventListener('click', () => {
+                    dismissPopUpNotification(notificationCard);
+                });
+
+                // Optional: Auto-dismiss after 8 seconds (adjust as needed)
+                setTimeout(() => {
+                    if (notificationCard.classList.contains('is-visible')) { // Only dismiss if not already dismissed
+                        dismissPopUpNotification(notificationCard);
+                    }
+                }, 8000);
+            }
+
+            /**
+             * Dismisses a given pop-up notification with an animation.
+             * @param {HTMLElement} notificationElement - The notification card element to dismiss.
+             */
+            function dismissPopUpNotification(notificationElement) {
+                // Add class to trigger slide-out animation
+                notificationElement.classList.remove('is-visible'); // Start fade-out/slide-out
+                notificationElement.classList.add('is-dismissing');
+
+                // Listen for the end of the transition before removing from DOM
+                notificationElement.addEventListener('transitionend', () => {
+                    // Remove the element from the DOM after animation completes
+                    notificationElement.remove();
+                }, { once: true }); // Ensure this listener runs only once
+            }
+
+            // --- Event Listeners for Test Buttons (Optional, you can remove these in production) ---
+            if (showUpdateBtn) { // Check if button exists before adding listener
+                showUpdateBtn.addEventListener('click', () => {
+                    const randomUpdate = mockUpdates[Math.floor(Math.random() * mockUpdates.length)];
+                    showPopUpNotification(randomUpdate.title, randomUpdate.message, randomUpdate.type);
+                });
+            }
+
+            if (showSuccessBtn) { // Check if button exists before adding listener
+                showSuccessBtn.addEventListener('click', () => {
+                    showPopUpNotification('Registration Complete!', 'Welcome aboard! Your account is now active and ready to explore our resources.', 'success');
+                });
+            }
+
+            // Optional: Show an initial pop-up notification on page load
+            setTimeout(() => {
+                showPopUpNotification('Welcome to Bamboo Institute!', 'We\'ve just launched new courses in AI and Blockchain. Explore them now!', 'info');
+            }, 2000); // Shows after 2 seconds
+            // --- END POP-UP NOTIFICATION LOGIC ---
+
+            // Your existing JavaScript code continues after this point
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
